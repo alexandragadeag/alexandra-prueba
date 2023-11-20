@@ -92,7 +92,7 @@ proporciona estructura y diseño a la página web. -->
         </div>
 
         <div>
-            <label form="state"> Comunidad Autónoma: </label>
+            <label for="state"> Comunidad Autónoma: </label>
             <select name="state" id="state">
                 <option value="m"> Madrid </option>
                 <option value="c"> Cataluña </option>
@@ -102,8 +102,16 @@ proporciona estructura y diseño a la página web. -->
         </div>
 
         <div>
-            <label form="comentarios"> Comentarios: </label>
+            <label for="comentarios"> Comentarios: </label>
             <textarea name="comentarios" id="comentarios" cols="60" rows="3"> </textarea>
+        </div>
+        <div>
+            <label  for="birthay">Fecha de nacimiento:</label>
+            <input type="date" id="birthay" name="birthay" min="2010-01-01" max="2023-12-31">
+        </div>
+        <div>
+            <label for="courseDatetime"> Fecha de comienzo del curso de Angular</label>
+            <input type="datetime-local" id="courseDatetime" name="courseDatetime">
         </div>
 
 
