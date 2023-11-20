@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario1</title>
 </head>
+
 <body>
     <h1> Formulario Básico</h1>
-<!--     
+    <!--     
     action= especificar la URL a donde se envía los datos
     method= especificar el método HTTP para enviar los datos (get/post) -->
     <form action="011.etiquetas_semanticas.html" method="post">
 
-<!-- div= utilizar como un contenedor o división e HTML, 
+        <!-- div= utilizar como un contenedor o división e HTML, 
 proporciona estructura y diseño a la página web. -->
 
         <div>
@@ -37,12 +39,12 @@ proporciona estructura y diseño a la página web. -->
             <label for="direccion"> Dirección: </label>
             <input type="text" name="direccion" id="Dirección">
         </div>
-    
+
         <div>
             <label for="nif"> NIF/DNI: </label>
             <input type="text" name="nif" id="nif" placeholder="56789878M">
         </div>
-    
+
         <div>
             <label for="email"> Correo elecrónico: </label>
             <input type="email" name="email" id="email" placeholder="usuario@hotmail.es">
@@ -60,20 +62,47 @@ proporciona estructura y diseño a la página web. -->
 
         <div>
             <label for="weight"> Peso(kg) </label>
-            <input type="number" name="weight" id="weight" step="0.50"> 
+            <input type="number" name="weight" id="weight" step="0.50">
         </div>
 
         <div>
             <label for="height"> Altura(cm) </label>
-            <input type="number" name="height" id="height" step="0.50"  min="59" max="240"> 
+            <input type="number" name="height" id="height" step="0.50" min="59" max="240">
         </div>
 
         <div>
             <label for="bio"> Biografía: </label>
-            <textarea name="bio" id="bio" rows="10" cols="50" minlength="10" maxlength="100"></textarea> 
+            <textarea name="bio" id="bio" rows="10" cols="50" minlength="10" maxlength="100"></textarea>
+        </div>
+
+        <div>
+            <label> Género: </label>
+        </div>
+        <div>
+            <input type="radio" id="male" name="genero" value="male">
+                <label for="male"> Masculino </label>
+        </div>
+        <div>
+            <input type="radio" id="female" name="genero" value="female">
+                <label for="female"> Femenino </label>
+        </div>
+        <div>
+            <input type="radio" id="other" name="genero" value="other">
+                <label for="other"> Otro </label>
+        </div>
+
+        <div>
+            <label form="state"> Comunidad Autónoma: </label>
+            <select name="state" id="state">
+                <option value="m"> Madrid </option>
+                <option value="c"> Cataluña </option>
+                <option value="a"> Andalucía </option>
+                <option value="g"> Galicia </option>
+            </select>
         </div>
 
 
+        
     </form>
 
 
@@ -81,6 +110,7 @@ proporciona estructura y diseño a la página web. -->
 
 
 
-    
+
 </body>
+
 </html>
