@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Formulario de Información Personal</title>
+</head>
+
+<body>
+    <h1> Información Personal </h1>
+
+    <form action="/backend" method="post">
+
+        <div>
+            <label for="nombre"> Nombre: </label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+        </div>
+        <div>
+            <label for="apellidos"> Apellidos: </label>
+            <input type="text" id="apellidos" name="apellidos" placeholder="Tus apellidos" required>
+        </div>
+        <div>
+            <label for="telefono"> Teléfono: </label>
+            <input type="number" id="telefono" name="telefono" placeholder="+34 606 87 56 03" required>
+        </div>
+        <div>
+            <label for="email"> E-mail: </label>
+            <input type="email" id="email" name="email" placeholder="tucorreo@gmail.com" required>
+        </div>
+        <div>
+            <label for="fecha"> Fecha de nacimiento: </label>
+            <input type="date" id="fecha" name="fecha" required>
+        </div>
+
+        <h2> Ubicación </h2>
+        <div></div>
+        <label for="pais"> País</label>
+        <select id="pais" name="pais" required>
+            <option value="1">España</option>
+            <option value="2">Italia</option>
+            <option value="3">Francia</option>
+            <option value="4">Portugal</option>
+        </select>
+        </div>
+
+        <div>
+            <label for="ciudad"> Ciudad: </label>
+            <input type="text" id="ciudad" name="ciudad" placeholder="Tu ciudad">
+        </div>
+
+        <h2> Preferencias </h2>
+
+        <label> Preferencias de color: </label>
+        <div>
+            <input type="radio" id="rojo" name="color" value="rojo">
+            <label for="rojo"> Rojo </label>
+        </div>
+        <div>
+            <input type="radio" id="verde" name="color" value="verde">
+            <label for="verde"> Verde </label>
+        </div>
+        <div>
+            <input type="radio" id="amarillo" name="color" value="amarillo">
+            <label for="amarillo"> Amarillo </label>
+        </div>
+
+        <div>
+            <label for="hobbies"> Hobbies: </label>
+            <select id="hobbies" name="hobbies" multiple>
+                <option value="deportes"> Deportes </option>
+                <option value="lectura"> Lectura </option>
+                <option value="viajar"> Viajar </option>
+                <option value="musica"> Escuchar música </option>
+            </select>
+        </div>
+
+
+    </form>
+
+</body>
+
+</html>
