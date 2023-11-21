@@ -15,3 +15,9 @@ h1{
 p{
     color:wheat;
 }
+
+/* agregar una imagen de fondo */
+.contenedor{
+    background-image: url('images.jpeg');
+    background-size: cover;
+}
