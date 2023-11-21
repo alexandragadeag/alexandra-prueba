@@ -1,0 +1,17 @@
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: blueviolet;
+    
+}
+.contendeor{
+    margin: 50px;
+    background-color: whitesmoke;
+}
+h1{
+    color: white;
+}
+p{
+    color:wheat;
+}
