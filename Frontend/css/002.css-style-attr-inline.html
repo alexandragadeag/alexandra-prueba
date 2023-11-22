@@ -5,13 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
 
+<style>
+.caja {
+width: 200px; /* Ancho del contenido */
+height: 200px; /* Alto del contenido */
+padding: 10px; /* Relleno */
+border: 5px solid black; /* Borde */
+margin: 20px; /* Margen */
+}
+</style>
+</head>
 <body>
     <!-- Padding: Si se da un valor único afecta a los 4 lados
     si se dan dos, el primero afectaría a la parte superior e inferior y el segundo afectaría a los lados derecho e izquierdo
 Si se dan los 4 valores, afecta en este orden: superior, derecha, inferior e izquierdo -->
-    <p style="color:green; padding:20px; margin:30px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    <p style="color:green; padding:20px 30px; margin:30px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         Assumenda deserunt architecto
         autem, recusandae ducimus labore cum porro odit ullam minus maiores nulla corporis nobis suscipit fugiat nemo
         ex. Reiciendis, corrupti.</p>
@@ -23,6 +32,9 @@ Si se dan los 4 valores, afecta en este orden: superior, derecha, inferior e izq
     <label for="edad" style="color:blueviolet; background-color: aqua;">
         Introducir edad:</label>
     <input type="number" name="edad" id="edad" style="height: 50px;">
+
+    <div class="caja">Hola, mundo!</div>
+
 
 </body>
 
