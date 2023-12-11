@@ -14,3 +14,17 @@ texto3 = """Hola esto es otro texto
 print(texto1)
 print(texto2)
 print(texto3)
+
+numero_alumnos = 20
+precio_producto = 99.99
+print('Número de alumnos', numero_alumnos)
+print('Precio de producto', precio_producto)
+
+numero_alumnos = numero_alumnos + 2
+print('Numero de alumnos', numero_alumnos)
+
+# Boolean: la primera letra de True o False va en mayúscula
+
+aprobado = True 
+activo = False 
+
