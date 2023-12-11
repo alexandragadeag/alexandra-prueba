@@ -48,5 +48,12 @@ print(precio_num) # 53.99 en número
 precio_num = precio_num + 5
 print(precio_num) # 58.99
 
+descripcion_producto = """
+El producto textil {} tiene un precio de {} €.
+"""
+
+print(descripcion_producto.format("Abrigo lana",100))
+print(descripcion_producto.format("Bufanda",40))
+print(descripcion_producto.format("Zapataos",150))
 
 
