@@ -31,3 +31,22 @@ print(palabras[2]) # Angular
 
 texto_adios = texto.replace("Hola","Adiós") # devuelve un nuevo string
 print(texto_adios) # Adiós curso Angular
+
+
+# Estraer y convertir un número de una frase
+
+precio_producto = "53.99 dólares"
+# paso 1: split
+precio_elementos = precio_producto.split()
+print(precio_elementos[0]) # 53.99 en texto
+
+# paso 2: convertir texto a número float()
+precio_num = float(precio_elementos[0])
+print(precio_num) # 53.99 en número 
+
+# paso 3: + 5
+precio_num = precio_num + 5
+print(precio_num) # 58.99
+
+
+
