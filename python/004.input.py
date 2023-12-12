@@ -15,7 +15,24 @@ peso_num = float(peso)
 print(peso_num - 5)
 
 
-# leer si está en alta o no bool()
+# leer si está de alta True o False no bool()
+
+print(bool()) # False
+print(bool(1)) # True
+print(bool(0)) # False
+print(bool("")) # Texto vacío False
+print(bool("Hola")) # Texto con contenido True
+emails = ['u1@gmail.com', 'u2@gmail.com']
+print(bool(emails)) # La lista tiene elementos, True
+mensajes = [] # Lista vacía
+print(bool(mensajes)) # False
+
+alta = input('Introduce si está dado de alta (1 o 0)')
+alta_bool = bool(int(alta))
+print('Está dado de alta', alta_bool)
+
+alta_bool = input('Introduce si está dado de alta 1 o 0') == '1' # True o False
+print('Está dado de alta', alta_bool)
 
 
 
