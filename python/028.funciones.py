@@ -26,5 +26,4 @@ print(resultado)
 print(resultado2)
 
 
-def contar_vocales(Frase):
-    pass
+
