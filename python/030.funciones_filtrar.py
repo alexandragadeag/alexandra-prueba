@@ -1,3 +1,4 @@
+
 def filtrar_precio(precios, precio_min, precio_max):
     precios_filtrados = []
     
@@ -10,3 +11,6 @@ def filtrar_precio(precios, precio_min, precio_max):
 # Uso
 precios = [10, 99.56, 53.23, 120.76, 32.44]
 precios_filtrados = filtrar_precio(precios, 5, 55)
+precios_filtrados = filtrar_precio(precios, 10, 200)
+
+print(precios_filtrados)
