@@ -1,4 +1,8 @@
 
 
-def saludo1():
-    print("Hola mundo")
+    
+def saludo():
+    print('Hola mundo')
+    
+def saludo2(name):
+    print(f'hOla{name}')
