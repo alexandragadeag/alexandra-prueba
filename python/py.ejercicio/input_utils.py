@@ -9,12 +9,12 @@ def read_int(prompt):
         except Exception: # captura cualquier tipo de error
            print('Error al leer la entrada')
            
-edad = read_int('Introduce tu edad: ')
-altura = read_int('Introduce tu altura: ')
-peso = read_int('Introduce tu peso: ')
-print(f'Tu edad es {edad}')
-print(f'Tu edad es {altura}')
-print(f'Tu peso es {peso}')
+#edad = read_int('Introduce tu edad: ')
+#altura = read_int('Introduce tu altura: ')
+#peso = read_int('Introduce tu peso: ')
+#print(f'Tu edad es {edad}')
+#print(f'Tu edad es {altura}')
+#print(f'Tu peso es {peso}')
 
 
 def read_float(prompt):
@@ -25,10 +25,10 @@ def read_float(prompt):
         except Exception:  
             print('Error al leer la entrada. Inténtalo de nuevo.')  
 
-salario = read_float('Introduce salario: ')
-precio = read_float('Introduce precio: ')
-print(f'El salario es {salario}')
-print(f'El preio es {precio} ')
+#salario = read_float('Introduce salario: ')
+#precio = read_float('Introduce precio: ')
+#print(f'El salario es {salario}')
+#print(f'El preio es {precio} ')
 
 def read_bool(prompt):
     while True:
@@ -45,5 +45,5 @@ def read_bool(prompt):
     
 
 
-alta = read_bool('¿Está dado de alta? (si/no): ')
-print(f'alta {alta}')
+#alta = read_bool('¿Está dado de alta? (si/no): ')
+#print(f'alta {alta}')
