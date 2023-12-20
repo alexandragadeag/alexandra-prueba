@@ -36,11 +36,25 @@ public class TiposDeDatos {
         String texto = "Hola mundo";
         boolean esVacio = texto.isBlank(); // Método de string para comprobar si un string esta vacío. 
 
+        String descripcion = "Producto desechable ecológico " 
+        + "druadero y respetable con medio ambiente";
+
+        /* Sin cerrar comillas dobles en cada línea da fallo:
+        String descripcion2 = "Texto muy larog de varias líneas
+        otra línea
+        otra línea";
+        */
+
+        // String bloque de texto mmultilinea
+        String textolargo = """
+                Esto es una línea
+                Esto es otra línea
+                y otra más
+                """;
+
+        System.out.println(textolargo);
 
 
-
-    
-    
 
 
     }
