@@ -1,4 +1,4 @@
-public class OperadoresLogicos {
+public class OperadoresLogicoAnd {
 
     public static void main(String[] args) {
 
