@@ -9,8 +9,11 @@
 
 public class FuncionesConReturn {
    
-    
-   // main se ejecuta siempre al ejecutar el programa sí o sí 
+   /* final: indica que no se puede modificar
+    */ 
+ static final double IVA_TIPO_GENERAL = 0.21; // constante
+
+    // main se ejecuta siempre al ejecutar el programa sí o sí 
    // no confundir con ramas de git, son totalmente independientes
    public static void main(String[] args){
      
@@ -24,7 +27,7 @@ public class FuncionesConReturn {
    }
 
    public static double calcularIVA(double precio) {
-    double iva = precio * 0.21;
+    double iva = precio * IVA_TIPO_GENERAL;
     return precio + iva;
    }
 }
