@@ -1,3 +1,9 @@
 {
-    "java.debug.settings.onBuildFailureProceed": true
+    "java.debug.settings.onBuildFailureProceed": true,
+    "java.project.sourcePaths": [
+        "Java/003.estructuras_control",
+        "Java/002.operadores",
+        "Java/001.tipos_de_datos",
+        "Java/004.funciones"
+    ]
 }
