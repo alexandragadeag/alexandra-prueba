@@ -9,10 +9,13 @@
 
 public class FuncionesConReturn {
    
-   /* final: indica que no se puede modificar
+   /* 
+   private: hace que solamente se pueda usar la constante dentro de esta clase y no en otras
+   static: pertenece a la clase y no ahce falta crar objeto
+   final: indica que no se puede modificar, que es el final
     */ 
- static final double IVA_TIPO_GENERAL = 0.21; // constante
-
+ static final double IVA_TIPO_GENERAL = 0.21; // variable constante
+ static final double IVA_TIPO_REDUCIDO = 0.10;
     // main se ejecuta siempre al ejecutar el programa sí o sí 
    // no confundir con ramas de git, son totalmente independientes
    public static void main(String[] args){
