@@ -2,6 +2,10 @@
 // Creación de una clase
 class Usuario {
 
+    // atributos de clase
+    activo = true;
+    
+    // atributos de instancia
     constructor(firstName, email, phone, age ){
          this.firstName = firstName;
          this.email = email;
@@ -19,6 +23,7 @@ class Usuario {
 let usuario1 = new Usuario("Usuario1", "user1mail.com", "11111111", 20);
 console.log(usuario1);
 
+// Invocar un métdo de un objeto que modifica sus atributos:
 usuario1.incrementarEdad()
 console.log(usuario1);
 
