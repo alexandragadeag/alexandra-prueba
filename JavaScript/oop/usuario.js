@@ -6,11 +6,13 @@ class Usuario {
     activo = true;
     
     // atributos de instancia
-    constructor(firstName, email, phone, age ){
+    constructor(firstName, email, phone, age, password, street){
          this.firstName = firstName;
          this.email = email;
          this.phone = phone;
          this.age = age;
+         this.password = password;
+         this.street = street;
 
     }
     incrementarEdad() {
@@ -20,12 +22,14 @@ class Usuario {
 }
 
 // Crear 3 objetos Usuario
-let usuario1 = new Usuario("Usuario1", "user1mail.com", "11111111", 20);
+let usuario1 = new Usuario("Usuario1", "user1mail.com", "11111111", 20, "admin", "corazón de maría");
 console.log(usuario1);
+console.log(usuario1.activo); //true
+console.log(usuario1.street);
 
 // Invocar un métdo de un objeto que modifica sus atributos:
 usuario1.incrementarEdad()
 console.log(usuario1);
 
-let usuario2 = new Usuario("usuario2", "user2@gmail.com", "222222222", 31);
+let usuario2 = new Usuario("usuario2", "user2@gmail.com", "222222222", 31, "admin", "amposta");
 console.log(usuario2);
