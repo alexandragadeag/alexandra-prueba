@@ -1,6 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { Producto } from '../product.model';
+import { Producto } from '../interfaces/product.model';
 
 @Component({
   selector: 'app-product-list',
@@ -16,6 +16,14 @@ export class ProductListComponent {
   nombres: string[] = ["juanito", "bea", "raquel", "vladimir"];
   productos: Producto[] = [
     // Crear objetos producto
+    {
+      title: "Producto 1",
+      price: 40.33
+    },
+    {
+      title: "Producto 2",
+      price: 35.5
+    }
   ];
 
   constructor() {}
