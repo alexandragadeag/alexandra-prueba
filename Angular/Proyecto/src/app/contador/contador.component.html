@@ -6,5 +6,5 @@
   <!-- 3 botones: incrementar, decrementar, resetear -->
   <button (click)="incrementar()">Incrementar contador</button>
   <button (click)="decrementar()">Decrementar contador</button>
-  <button (click)="resetear()">Resetear contador</button>
+  <button [disabled]="!contador" (click)="resetear()">Resetear contador</button>
   
