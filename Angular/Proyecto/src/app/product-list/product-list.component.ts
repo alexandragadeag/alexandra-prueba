@@ -23,6 +23,14 @@ export class ProductListComponent {
     {
       title: "Producto 2",
       price: 35.5
+    },
+    {
+      title: "Producto 3",
+      price: 47.2
+    },
+    {
+      title: "Producto 4",
+      price: 47.2
     }
   ];
 
