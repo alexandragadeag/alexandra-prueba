@@ -18,7 +18,7 @@ export class ProductDetailComponent {
     
     this.product = {
       title: "Televisor Samsung 50 pulgadas",
-      price: 450
+      price: 36
     };
     console.log(this.product);
   
