@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { customer } from '../interfaces/customer.model';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-customer-detail',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './customer-detail.component.html',
   styleUrl: './customer-detail.component.css'
 })
