@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../interface/user.model';
+import { DatePipe, NgStyle } from '@angular/common';
 
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
-  imports: [],
+  imports: [DatePipe, NgStyle],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.css'
 })
