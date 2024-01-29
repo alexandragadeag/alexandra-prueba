@@ -3,7 +3,7 @@
 
     <div class="row">
 
-        <div class="col-8">
+        <div class="col-12">
 
             <!-- Escrivir tabla de bootstrap-->
             <table class="table">
@@ -14,6 +14,7 @@
                         <th scope="col">Salario (€)</th>
                         <th scope="col">Active</th>
                         <th scope="col">Register Date</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +26,11 @@
                         <td>{{user.salary}}</td>
                         <td>{{user.active}}</td>
                         <td>{{user.registerDate}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary me-2">Ver</button>
+                            <button type="button" class="btn btn-success me-2">Editar</button>
+                            <button type="button" class="btn btn-danger">Borrar</button>
+                        </td>
                     </tr>
                 }
                 </tbody>
