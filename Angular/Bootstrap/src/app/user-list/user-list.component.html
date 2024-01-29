@@ -22,8 +22,10 @@
                     @for (user of users; track user.id) {
                     <tr>
                         <th scope="row">{{user.id}}</th>
-                        <td>{{user.email}}</td>
-                        <td>{{user.salary}}</td>
+                        <td>
+                            <a href="mailto:{{user.email}}">{{user.email}}</a>
+                        </td>
+                        <td [ngStyle]="{color: user.salary >= 1000 ? 'green' : 'red'}">{{user.salary}}</td>
                         <td [ngStyle]="{color: user.active ? 'green' : 'red'}">{{user.active}}</td>
                         <td>{{user.registerDate | date:'dd/MM/yy'}}</td>
                         <td>
