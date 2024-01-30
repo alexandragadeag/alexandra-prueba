@@ -1,1 +1,20 @@
-<p>restaurant-detail works!</p>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+
+   
+
+@if(restaurant){
+<p>Resurante con ID: {{restaurant.id}}</p>
+<p>{{restaurant.name}}</p>
+<p>Ubicación: {{restaurant.location}}</p>
+
+} @else {
+<p>Restaurante no encontrado.</p>
+}
+
+   </div>
+  </div>
+</div>
