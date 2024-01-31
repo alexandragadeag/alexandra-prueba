@@ -14,6 +14,7 @@ export class RestaurantDetailComponent implements OnInit {
   restaurant: Restaurant | undefined;
 
   constructor (private activatedRoute: ActivatedRoute) {}
+  
   ngOnInit(): void {
     //params es un Observable de rxjs
     // captura el id de la url (id del restaurante)
