@@ -1,40 +1,44 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-       <table class="table table-striped">
-        <thead>
-            <tr>
-                <td scope="col">Id</td>
-                <td scope="col">Name</td>
-                <td scope="col">Location</td>
-                <td scope="col">Rating</td>
-                <td scope="col">Phone</td>
-                <td scope="col">Actions</td>
-            </tr>
-        </thead>
-        <tbody>
-            @for(restaurant of restaurants; track restaurant.id){
-                <tr>
-                    <!-- TODO: Agregar una imagen -->
-                  <td>{{restaurant.id}}</td>
-                  <td>{{restaurant.name}}</td>
-                  <td>{{restaurant.location}}</td>
-                  <td>{{restaurant.rating}}</td>
-                  <td>{{restaurant.phone}}</td>
-                  <td>
-                    <button class="btn btn-success me-2"
-                    [routerLink]="['/restaurantes', restaurant.id, 'detalle']">
-                    Ver detalle</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td scope="col">Id</td>
+                        <td scope="col">Imagen</td>
+                        <td scope="col">Name</td>
+                        <td scope="col">Location</td>
+                        <td scope="col">Rating</td>
+                        <td scope="col">Phone</td>
+                        <td scope="col">Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(restaurant of restaurants; track restaurant.id){
+                    <tr>
+                        <!-- TODO: Agregar una imagen -->
+                        <td>{{restaurant.id}}</td>
+                        <td>
+                            <img style="max-width:100px;" [src]="restaurant.imageUrl">
+                            {{restaurant.imageUrl}}
+                        </td>
+                        <td>{{restaurant.name}}</td>
+                        <td>{{restaurant.location}}</td>
+                        <td>{{restaurant.rating}}</td>
+                        <td>{{restaurant.phone}}</td>
+                        <td>
+                            <button class="btn btn-success me-2"
+                                [routerLink]="['/restaurantes', restaurant.id, 'detalle']">
+                                Ver detalle</button>
 
-                    <button class="btn btn-primary"
-                    [routerLink]="['/restaurantes', restaurant.id, 'reservas']">
-                    Hacer reserva</button>
-                  
-                  </td>
-                </tr>
-            }
-        </tbody>
-       </table>
+                            <button class="btn btn-primary" [routerLink]="['/restaurantes', restaurant.id, 'reservas']">
+                                Hacer reserva</button>
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
 
         </div>
     </div>
