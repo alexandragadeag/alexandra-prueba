@@ -7,8 +7,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 
 
+
 export const routes: Routes = [
   
+    {
+        path:'', //Ruta vacía
+        component: HomeComponent
+    },
     {
         path:'',
         //component: RestaurantListComponent
