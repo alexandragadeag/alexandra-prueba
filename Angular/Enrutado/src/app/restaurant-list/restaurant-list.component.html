@@ -22,9 +22,14 @@
                   <td>{{restaurant.rating}}</td>
                   <td>{{restaurant.phone}}</td>
                   <td>
-                    <button class="btn btn-success"
+                    <button class="btn btn-success me-2"
                     [routerLink]="['/restaurantes', restaurant.id, 'detalle']">
                     Ver detalle</button>
+
+                    <button class="btn btn-primary"
+                    [routerLink]="['/restaurantes', restaurant.id, 'reservas']">
+                    Hacer reserva</button>
+                  
                   </td>
                 </tr>
             }
