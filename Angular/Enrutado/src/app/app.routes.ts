@@ -4,8 +4,19 @@ import { RestaurantFormComponent } from './restaurant-form/restaurant-form.compo
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { RestaurantBookingComponent } from './restaurant-booking/restaurant-booking.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './home/home.component';
+
 
 export const routes: Routes = [
+  
+    {
+        path:'',
+        //component: RestaurantListComponent
+         redirectTo: '/restaurantes',
+         pathMatch: 'full'   //(CASO ESPECIAL: se pone para evitar que detecte cualquier url ya que todas las urls empiezar por cadena vacía  )
+        // Opción 2 crear un componente llamado Home, desde donde navegar a las otras páginas 
+    },
+    
     {
         path: 'restaurantes',
         component: RestaurantListComponent
