@@ -14,7 +14,7 @@ export class RestaurantDetailComponent implements OnInit {
   restaurant: Restaurant | undefined;
 
   constructor (private activatedRoute: ActivatedRoute) {}
-  
+
   ngOnInit(): void {
     //params es un Observable de rxjs
     // captura el id de la url (id del restaurante)
@@ -31,7 +31,9 @@ export class RestaurantDetailComponent implements OnInit {
          name: "Tres Mares",
          location: "Calle Corazón María, 63",
          phone: "654389067",
-         rating: 5
+         rating: 5,
+         imageUrl: "https://placehold.co/300"
+
       };
 
 

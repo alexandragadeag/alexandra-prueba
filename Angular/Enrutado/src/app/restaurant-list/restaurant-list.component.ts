@@ -16,7 +16,8 @@ export class RestaurantListComponent {
     name: "100 montaditos",
     location: "Calle de María 63",
     rating: 5,
-    phone: "657890066"
+    phone: "657890066",
+    imageUrl: "https://placehold.co/300"
 
   },
   {
@@ -24,7 +25,9 @@ export class RestaurantListComponent {
     name: "Bar Chapa",
     location: "Calle Amposta",
     rating: 6,
-    phone: "655890166"
+    phone: "655890166",
+    imageUrl: "https://placehold.co/300"
+
 
   },
   {
@@ -32,7 +35,9 @@ export class RestaurantListComponent {
     name: "Bar Sal",
     location: "Calle Herencia",
     rating: 4,
-    phone: "698890167"
+    phone: "698890167",
+    imageUrl: "https://placehold.co/300"
+
 
   },
   {
@@ -40,7 +45,9 @@ export class RestaurantListComponent {
     name: "Bar Juan",
     location: "Calle Numancia",
     rating: 8,
-    phone: "696690169"
+    phone: "696690169",
+    imageUrl: "https://placehold.co/300"
+
 
   }];
   
