@@ -32,7 +32,7 @@ export class RestaurantDetailComponent implements OnInit {
          location: "Calle Corazón María, 63",
          phone: "654389067",
          rating: 5,
-         imageUrl: "https://placehold.co/300"
+         imageUrl: "https://placehold.co/600"
 
       };
 

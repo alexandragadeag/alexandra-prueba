@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <h1 class="mt-5">Listado de restaurantes</h1>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -19,7 +20,11 @@
                         <!-- TODO: Agregar una imagen -->
                         <td>{{restaurant.id}}</td>
                         <td>
+                            
+                            <a [routerLink]="['/restaurantes', restaurant.id, 'detalle']">
                             <img style="max-width:100px;" [src]="restaurant.imageUrl">
+                            </a>
+
                             {{restaurant.imageUrl}}
                         </td>
                         <td>{{restaurant.name}}</td>
