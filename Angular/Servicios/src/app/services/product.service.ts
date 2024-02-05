@@ -17,4 +17,15 @@ export class ProductService {
   obtenerProducto1(): Observable<Product> {
     return this.httpClient.get<Product>('https://fakestoreapi.com/products/1');
   }
+
+  // Obtener todos los productos:
+  findall(){
+    return this.httpClient.get<Product[]>('https://fakestoreapi.com/products');
+  }
+  // Obtener un producto con su id com parámetro:
+  findByid(id: number | string) {
+    return this.httpClient.get<Product>('https://fakestoreapi.com/products/'+ id);
+
+  }
+
 }
