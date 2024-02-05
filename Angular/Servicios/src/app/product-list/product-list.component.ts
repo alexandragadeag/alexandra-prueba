@@ -19,5 +19,8 @@ export class ProductListComponent {
     console.log(texto);
 
   }
+ imprimirProduct(): void {
+  this.productService.obtenerProducto1().subscribe(p => console.log(p));
+ }
 
 }
