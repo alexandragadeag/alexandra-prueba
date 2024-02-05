@@ -1,3 +1,10 @@
 <p>product-list works!</p>
 <button (click)="imprimirHola()">Imprimir Hola Mundo</button>
 <button (click)="imprimirProduct()">Imprimir producto</button>
+
+<ul>
+    @for (product of products; track product) {
+        <li> {{product.title}} {{product.category}}</li>
+
+    }
+</ul>
