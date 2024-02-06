@@ -13,6 +13,7 @@ import { Product } from '../Interfaces/product.model';
 })
 export class ProductListComponent implements OnInit{
 
+
   products: Product[] = []; // ARRAY DE PRODUCTOS QUE VIENEN DE FAKESTORE API
 
   constructor(private productService: ProductService){}
@@ -49,4 +50,23 @@ export class ProductListComponent implements OnInit{
   this.productService.create(tvSamsung).subscribe(p => console.log(p));
  }
 
+ actualizarProducto(){
+  const tvSamsung: Product = {
+    id: 1,
+    descriptiton: 'Example',
+    category: 'Electrónica',
+    price: 500,
+    image: '',
+    title: 'Tv Samsung',
+    rating: {
+      rate: 4.5,
+      count: 120
+    }
+  };
+  // update
+  this.productService.update(1, tvSamsung).subscribe(p => console.log(p));
+}
+  borrarProducto() {
+    this.productService.deleteById(5).subscribe(p => console.log(p));
+    }
 }

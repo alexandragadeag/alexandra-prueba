@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductService {
+  
 
   constructor(private httpClient: HttpClient) { }
 
@@ -37,8 +38,11 @@ export class ProductService {
   // Método para actualizr un producto en el API REST
   update(id:number | string, product: Product): Observable<Product> {
     return this.httpClient.put<Product>('https://fakestoreapi.com/products/' +id, product);
-
-    // Método para borrar un producto
   }
 
+  // Método para borrar un producto
+  deleteById(id: number | string) {
+    return this.httpClient.delete('https://fakestoreapi.com/products/' + id);
+  }
 }
+
