@@ -33,6 +33,12 @@ export class ProductService {
   create(product: Product){
      return this.httpClient.post<Product>('https://fakestoreapi.com/products',product);
   }
-  
+
+  // Método para actualizr un producto en el API REST
+  update(id:number | string, product: Product): Observable<Product> {
+    return this.httpClient.put<Product>('https://fakestoreapi.com/products/' +id, product);
+
+    // Método para borrar un producto
+  }
 
 }
