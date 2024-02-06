@@ -30,5 +30,8 @@ export class ProductListComponent implements OnInit{
  imprimirProduct(): void {
   this.productService.obtenerProducto1().subscribe(p => console.log(p));
  }
+ crearProducto(): void {
+  
+ }
 
 }

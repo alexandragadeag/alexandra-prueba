@@ -28,4 +28,11 @@ export class ProductService {
 
   }
 
+  // Método create para eviar un producto al API REST
+  // Esto crearía unnuevo producto en base de datos
+  create(product: Product){
+     return this.httpClient.post<Product>('https://fakestoreapi.com/products',product);
+  }
+  
+
 }
