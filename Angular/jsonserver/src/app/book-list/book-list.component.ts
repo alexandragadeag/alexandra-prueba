@@ -23,7 +23,8 @@ export class BookListComponent implements OnInit {
   // ngOnInit inicialiazar el array trayendo libros con httpClient
   // Ejemplo SIN SERVICIO
   ngOnInit(): void {
-   this.http.get<Book[]>('http://localhost:3000/books').subscribe(books => this.books = books);
+   this.http.get<Book[]>('http://localhost:3000/books')
+   .subscribe(books => this.books = books);
   }
   
 }
