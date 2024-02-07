@@ -1,12 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Book } from '../interfaces/book.model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-book-detail',
   standalone: true,
-  imports: [],
+  imports: [HttpClientModule],
   templateUrl: './book-detail.component.html',
   styleUrl: './book-detail.component.css'
 })
-export class BookDetailComponent {
+export class BookDetailComponent implements OnInit {
+
+  // declarar el boot
+  book: Book | undefined;
+
+  // constructor con httpClient
+  constructor(private http: HttpClient,
+              private activatedRoute: ActivatedRoute) {}
+  
+
+  // ngOnInit get y traiga un book 
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id'];
+      this.http.get<Book>(`http://localhost:3000/books/${id}`).subscribe(book => this.book = book);
+    });   
+  }
+
 
 }
