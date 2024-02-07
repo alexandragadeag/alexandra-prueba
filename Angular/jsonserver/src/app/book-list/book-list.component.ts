@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../interfaces/book.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-book-list',
   standalone: true,
-  imports: [ HttpClientModule ],
+  imports: [ HttpClientModule, RouterLink ],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
