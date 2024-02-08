@@ -27,7 +27,7 @@ export class AuthorListComponent implements OnInit{
   }
   deleteAuthor(id: string | number) {
     //1. mostrar un comfirm que pregunte si quiere borrar 
-    const remove: boolean = confirm("¿Quieres borrar e autor de verdad?");
+    const remove: boolean = confirm("¿Quieres borrar el autor de verdad?");
 
     if(!remove) return; // si el usuario no ha confirmado entonces no se borra
 
