@@ -15,7 +15,8 @@ export class BookFormComponent {
     numPages: new FormControl(150),
     price: new FormControl(),
     available: new FormControl(true),
-    publishDate: new FormControl(new Date(). toISOString().slice(0, 16))
+    publishDate: new FormControl(new Date(). toISOString().slice(0, 16)),
+    category: new FormControl()
   });
 
   save(): void{
@@ -37,6 +38,10 @@ export class BookFormComponent {
     const publishDate =
     this.bookForm.get('publishDate')?.value;
     console.log(publishDate);
+
+    const category =
+    this.bookForm.get('category')?.value;
+    console.log(category);
     
   }
 

@@ -28,6 +28,25 @@
     <input type="datetime-local" id="publishDate" formControlName="publishDate">
 </div>
 
+<!--Radio buttons para seleccionar 1 opción entre muchas
+Ideal para opciones fijas, estáticas, número limitado de opciones -->
+
+<div>
+    <label for="category">Categoría</label>
+<div>
+    <label for="novela">Novela</label>
+    <input id="novela" value="novela" type="radio" formControlName="category">
+
+    <label for="romance">Romance</label>
+    <input id="romance" value="romance" type="radio" formControlName="category">
+
+    <label for="educacion">Educación</label>
+    <input id="educacion" value="educacion" type="radio" formControlName="category">
+
+
+</div>
+</div>
+
 <button type="submit">Enviar</button>
 
 </form>
