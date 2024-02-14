@@ -16,7 +16,8 @@ export class BookFormComponent {
     price: new FormControl(),
     available: new FormControl(true),
     publishDate: new FormControl(new Date(). toISOString().slice(0, 16)),
-    category: new FormControl()
+    category: new FormControl(),
+    author: new FormControl()
   });
 
   save(): void{
@@ -42,6 +43,10 @@ export class BookFormComponent {
     const category =
     this.bookForm.get('category')?.value;
     console.log(category);
+
+    const author =
+    this.bookForm.get('author')?.value;
+    console.log(author);
     
   }
 
