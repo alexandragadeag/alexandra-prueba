@@ -64,6 +64,20 @@ dentro de la variable de opciones.
 Por ejemplo: etiquetas 
 -->
 
+<div>
+    <label for="topics">Temáticas del libro</label>
+    <select id="topics" formControlName="topics" multiple>
+    <option value="">Selecciona una temática</option>
+    <option value="Medieval">Medieval</option>
+    <option value="Aventura">Aventura</option>
+    <option value="Romance">Romance</option>
+    <option value="Ficción">Ficción</option>
+    <option value="Futurista">Futurista</option>
+    </select>
+    <div>    
+    <small>Ctrl + clic para selecionar más de una temática</small>
+    </div>
+    </div>
 
 
 <button type="submit">Enviar</button>
