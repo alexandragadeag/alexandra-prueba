@@ -13,7 +13,9 @@ export class BookFormComponent {
   bookForm = new FormGroup ({
     title: new FormControl(''),
     numPages: new FormControl(150),
-    price: new FormControl()
+    price: new FormControl(),
+    available: new FormControl(true),
+    publishDate: new FormControl(new Date(). toISOString().slice(0, 16))
   });
 
   save(): void{
@@ -26,7 +28,15 @@ export class BookFormComponent {
 
     const price =
     this.bookForm.get('price')?.value;
-    console.log(numPages);
+    console.log(price);
+
+    const available =
+    this.bookForm.get('available')?.value;
+    console.log(available);
+
+    const publishDate =
+    this.bookForm.get('publishDate')?.value;
+    console.log(publishDate);
     
   }
 
