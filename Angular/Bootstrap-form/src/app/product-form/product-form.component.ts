@@ -63,7 +63,7 @@ export class ProductFormComponent {
 
         console.log(product);
         
-        // El objeto se puede sacar directamente del backend
+        // El objeto se puede enviar al  backend
         // httpClient.post
 
         }

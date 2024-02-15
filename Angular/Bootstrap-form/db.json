@@ -1,0 +1,22 @@
+{
+    "products": [
+    {
+    "id": 1,
+    "title": "prueba producto",
+    "price": 4.99,
+    "available": true,
+    "publishDate": "2024-01-01T10:30",
+    "manufacturer": {
+    "id": 1,
+    "name": "pepsi",
+    "year": 1920
+    },
+    "categories": [
+    {
+    "id": 1,
+    "name": "vegan"
+    }
+    ]
+    }
+    ]
+    }
