@@ -3,7 +3,7 @@ import { Manufacturer } from "./manufacturer.model";
 
 export interface Product {
     id: number;
-    tittle: string;
+    title: string;
     price: number;
     available: boolean;
     publishDate: Date;

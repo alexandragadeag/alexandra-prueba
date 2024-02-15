@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Manufacturer } from '../interfaces/manufacturer.model';
 import { Category } from '../interfaces/category.model';
+import { Product } from '../interfaces/product.model';
 @Component({
   selector: 'app-product-form',
   standalone: true,
@@ -36,12 +37,12 @@ export class ProductFormComponent {
         { id: 4, name: "Vegan"}];
 
         productForm = new FormGroup({
-          id: new FormControl({disabled: true}),
+          id: new FormControl(),
           title: new FormControl('', Validators.required),
           price: new FormControl(0, [Validators.min(0), Validators.max(500)]),
           available: new FormControl(false),
           publishDate: new FormControl(null),
-          manufacturer: new FormControl(null),
+          manufacturer: new FormControl(),
           categories: new FormControl([])
         });
 
@@ -49,16 +50,23 @@ export class ProductFormComponent {
         console.log('invocando.save');
 
         const product: Product = {
+          id: this.productForm.get('id')?.value ?? 0,
+          title: this.productForm.get('title')?.value ?? '',
+          price: this.productForm.get('price')?.value ?? 0,
+          available: this.productForm.get('available')?.value ?? false,
+          publishDate: this.productForm.get('publishDate')?.value ?? new Date(),
+          manufacturer: this.productForm.get('manufacturer')?.value,
+          categories: this.productForm.get('categories')?.value ?? []
+          
 
         };
 
         console.log(product);
         
+        // El objeto se puede sacar directamente del backend
         // httpClient.post
 
         }
 
-
-  
 
 }
