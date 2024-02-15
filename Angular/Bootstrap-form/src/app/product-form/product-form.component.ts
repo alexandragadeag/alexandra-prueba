@@ -46,6 +46,15 @@ export class ProductFormComponent {
         });
 
         save(): void {
+        console.log('invocando.save');
+
+        const product: Product = {
+
+        };
+
+        console.log(product);
+        
+        // httpClient.post
 
         }
 
