@@ -47,6 +47,28 @@
       "categories": [
         "Selecciona categorías"
       ]
+    },
+    {
+      "id": 0,
+      "title": "Hola ",
+      "price": 0.04,
+      "available": true,
+      "publishDate": "2024-02-23T14:05",
+      "manufacturer": {
+        "id": 1,
+        "name": "FilaMotor",
+        "year": 2012
+      },
+      "categories": [
+        {
+          "id": 1,
+          "name": "Bebidas"
+        },
+        {
+          "id": 2,
+          "name": "Carne"
+        }
+      ]
     }
   ]
 }

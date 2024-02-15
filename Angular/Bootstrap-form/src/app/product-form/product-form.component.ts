@@ -67,7 +67,8 @@ export class ProductFormComponent {
         console.log(product);
     
         const url = 'http://localhost:3000/products';
-
+        
+        //CREATE DE LAS OPERACIONES CRUD
         this.httpClient.post<Product>(url, product)
         .subscribe(data => console.log(data));
         
