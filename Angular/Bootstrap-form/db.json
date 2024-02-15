@@ -1,22 +1,52 @@
 {
-    "products": [
+  "products": [
     {
-    "id": 1,
-    "title": "prueba producto",
-    "price": 4.99,
-    "available": true,
-    "publishDate": "2024-01-01T10:30",
-    "manufacturer": {
-    "id": 1,
-    "name": "pepsi",
-    "year": 1920
+      "id": "1",
+      "title": "prueba producto",
+      "price": 4.99,
+      "available": true,
+      "publishDate": "2024-01-01T10:30",
+      "manufacturer": {
+        "id": 1,
+        "name": "pepsi",
+        "year": 1920
+      },
+      "categories": [
+        {
+          "id": 1,
+          "name": "vegan"
+        }
+      ]
     },
-    "categories": [
     {
-    "id": 1,
-    "name": "vegan"
+      "id": 0,
+      "title": "Hola ",
+      "price": 0.04,
+      "available": true,
+      "publishDate": "2024-02-23T14:05",
+      "manufacturer": {
+        "id": 1,
+        "name": "FilaMotor",
+        "year": 2012
+      },
+      "categories": [
+        "Selecciona categorías"
+      ]
+    },
+    {
+      "id": 0,
+      "title": "Hola ",
+      "price": 0.04,
+      "available": true,
+      "publishDate": "2024-02-23T14:05",
+      "manufacturer": {
+        "id": 1,
+        "name": "FilaMotor",
+        "year": 2012
+      },
+      "categories": [
+        "Selecciona categorías"
+      ]
     }
-    ]
-    }
-    ]
-    }
+  ]
+}

@@ -3,10 +3,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Manufacturer } from '../interfaces/manufacturer.model';
 import { Category } from '../interfaces/category.model';
 import { Product } from '../interfaces/product.model';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 @Component({
   selector: 'app-product-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,HttpClientModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -45,7 +47,8 @@ export class ProductFormComponent {
           manufacturer: new FormControl(),
           categories: new FormControl([])
         });
-
+      
+        constructor(private httpClient: HttpClient) {}
         save(): void {
         console.log('invocando.save');
 
@@ -62,6 +65,11 @@ export class ProductFormComponent {
         };
 
         console.log(product);
+    
+        const url = 'http://localhost:3000/products';
+
+        this.httpClient.post<Product>(url, product)
+        .subscribe(data => console.log(data));
         
         // El objeto se puede enviar al  backend
         // httpClient.post
