@@ -1,1 +1,23 @@
-<p>product-form works!</p>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+  
+        <h1 class="mt-5">Creación de nuevo producto</h1>
+        <form class="mt-5" [formGroup]="productForm" (ngSubmit)="save()">
+  
+          <!-- Campo oculto id -->
+          <input type="hidden" formControlName="id">
+  
+  
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title" formControlName="title"
+            placeholder="">
+            <label for="title">Título</label>
+          </div>
+  
+        </form>
+  
+      </div>
+    </div>
+  </div>

@@ -35,18 +35,18 @@ export class ProductFormComponent {
         { id: 3, name: "Legumbres"},
         { id: 4, name: "Vegan"}];
 
-        ProductForm = new FormGroup({
-          id: new FormControl({value:'',disabled: true}),
-          title: new FormControl(0,[Validators.required, Validators.min(0), Validators.max(500)]),
+        productForm = new FormGroup({
+          id: new FormControl({disabled: true}),
+          title: new FormControl('', Validators.required),
+          price: new FormControl(0, [Validators.min(0), Validators.max(500)]),
           available: new FormControl(false),
           publishDate: new FormControl(null),
           manufacturer: new FormControl(null),
-          categories: new FormControl(null),
-
+          categories: new FormControl([])
         });
 
         save(): void {
-          
+
         }
 
 
