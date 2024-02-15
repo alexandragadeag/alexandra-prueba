@@ -5,6 +5,7 @@ import { Book } from '../interfaces/book.model';
 @Component({
   selector: 'app-book-form',
   standalone: true,
+  // AGREGAR IMPORT DE FORMULARIOS:
   imports: [ReactiveFormsModule],
   templateUrl: './book-form.component.html',
   styleUrl: './book-form.component.css'
@@ -64,7 +65,7 @@ export class BookFormComponent {
       numPages: this.bookForm.get('numPages')?.value ?? 0, // number int
       price: this.bookForm.get('price')?.value ?? 0.0, // number float
       available: this.bookForm.get('available')?.value ?? false, // boolean
-      publishDateString: this.bookForm.get('publishDate')?.value ?? new Date(),
+      publishDate: this.bookForm.get('publishDate')?.value ?? new Date(),
       category: this.bookForm.get('category')?.value ?? 'default',
       topics: this.bookForm.get('topics')?.value ?? [],
     };
