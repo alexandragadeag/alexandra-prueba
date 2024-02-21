@@ -2,7 +2,7 @@
   "products": [
     {
       "id": "1",
-      "title": "prueba producto",
+      "title": "prueba producto modifie",
       "price": 4.99,
       "available": true,
       "publishDate": "2024-01-01T10:30",
@@ -15,84 +15,6 @@
         {
           "id": 1,
           "name": "vegan"
-        }
-      ]
-    },
-    {
-      "id": "0",
-      "title": "Hola ",
-      "price": 0.04,
-      "available": true,
-      "publishDate": "2024-02-23T14:05",
-      "manufacturer": {
-        "id": 1,
-        "name": "FilaMotor",
-        "year": 2012
-      },
-      "categories": [
-        "Selecciona categorías"
-      ]
-    },
-    {
-      "id": "0",
-      "title": "Hola ",
-      "price": 0.04,
-      "available": true,
-      "publishDate": "2024-02-23T14:05",
-      "manufacturer": {
-        "id": 1,
-        "name": "FilaMotor",
-        "year": 2012
-      },
-      "categories": [
-        "Selecciona categorías"
-      ]
-    },
-    {
-      "id": "0",
-      "title": "Hola ",
-      "price": 0.04,
-      "available": true,
-      "publishDate": "2024-02-23T14:05",
-      "manufacturer": {
-        "id": 1,
-        "name": "FilaMotor",
-        "year": 2012
-      },
-      "categories": [
-        {
-          "id": 1,
-          "name": "Bebidas"
-        },
-        {
-          "id": 2,
-          "name": "Carne"
-        }
-      ]
-    },
-    {
-      "id": 0,
-      "title": "Carne",
-      "price": 50.03,
-      "available": true,
-      "publishDate": "2024-02-25T10:56",
-      "manufacturer": {
-        "id": 1,
-        "name": "FilaMotor",
-        "year": 2012
-      },
-      "categories": [
-        {
-          "id": 1,
-          "name": "Bebidas"
-        },
-        {
-          "id": 2,
-          "name": "Carne"
-        },
-        {
-          "id": 3,
-          "name": "Legumbres"
         }
       ]
     }

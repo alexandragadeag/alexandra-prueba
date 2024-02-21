@@ -4,7 +4,7 @@ import { Manufacturer } from '../interfaces/manufacturer.model';
 import { Category } from '../interfaces/category.model';
 import { Product } from '../interfaces/product.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -52,7 +52,9 @@ export class ProductFormComponent {
         isUpdate: boolean = false;
 
         constructor(private httpClient: HttpClient,
-        private activatedRoute: ActivatedRoute) {}
+        private activatedRoute: ActivatedRoute, 
+        private router: Router
+        ) {}
 
 
   ngOnInit(): void {
@@ -93,15 +95,15 @@ export class ProductFormComponent {
         };
 
         console.log(product);
-        
+
         if(this.isUpdate){
           // ACTUALIZAR UN PRODUCTO EXISTENTE
           const urlForUpdate = 'http://localhost:3000/products/' + product.id;
-          this.httpClient.put<Product>(urlForUpdate, product).subscribe(data => console.log(data));
+          this.httpClient.put<Product>(urlForUpdate, product).subscribe(data => this.router.navigate(['/']));
         } else {
           // CREAR UN NUEVO PRODUCTO
           const url = 'http://localhost:3000/products';
-          this.httpClient.post<Product>(url, product).subscribe(data => console.log(data));
+          this.httpClient.post<Product>(url, product).subscribe(data => this.router.navigate(['/']));
         }
   
       }
