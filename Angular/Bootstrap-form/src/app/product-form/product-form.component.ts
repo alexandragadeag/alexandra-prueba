@@ -4,6 +4,7 @@ import { Manufacturer } from '../interfaces/manufacturer.model';
 import { Category } from '../interfaces/category.model';
 import { Product } from '../interfaces/product.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -43,12 +44,36 @@ export class ProductFormComponent {
           title: new FormControl('', Validators.required),
           price: new FormControl(0, [Validators.min(0), Validators.max(500)]),
           available: new FormControl(false),
-          publishDate: new FormControl(null),
+          publishDate: new FormControl(new Date()),
           manufacturer: new FormControl(),
-          categories: new FormControl([])
+          categories: new FormControl<Category[]>([])
         });
       
-        constructor(private httpClient: HttpClient) {}
+        constructor(private httpClient: HttpClient,
+        private activatedRoute: ActivatedRoute) {}
+
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+    let id =params['id'];
+    this.httpClient.get<Product>(`http://localhost:3000/products/${id}`)
+    .subscribe(product => {
+    
+      this.productForm.reset({
+        id:product.id,
+        title: product.title,
+        price: product.price,
+        available: product.available,
+        publishDate: product.publishDate,
+        manufacturer: product.manufacturer,
+        categories: product.categories
+      });
+    
+     });
+    });
+  
+  }
+        
         save(): void {
         console.log('invocando.save');
 
