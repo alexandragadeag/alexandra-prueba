@@ -19,7 +19,7 @@
       ]
     },
     {
-      "id": 0,
+      "id": "0",
       "title": "Hola ",
       "price": 0.04,
       "available": true,
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "id": 0,
+      "id": "0",
       "title": "Hola ",
       "price": 0.04,
       "available": true,
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "id": 0,
+      "id": "0",
       "title": "Hola ",
       "price": 0.04,
       "available": true,
@@ -67,6 +67,32 @@
         {
           "id": 2,
           "name": "Carne"
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "title": "Carne",
+      "price": 50.03,
+      "available": true,
+      "publishDate": "2024-02-25T10:56",
+      "manufacturer": {
+        "id": 1,
+        "name": "FilaMotor",
+        "year": 2012
+      },
+      "categories": [
+        {
+          "id": 1,
+          "name": "Bebidas"
+        },
+        {
+          "id": 2,
+          "name": "Carne"
+        },
+        {
+          "id": 3,
+          "name": "Legumbres"
         }
       ]
     }

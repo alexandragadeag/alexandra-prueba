@@ -93,17 +93,16 @@ export class ProductFormComponent {
         };
 
         console.log(product);
-    
-        const url = 'http://localhost:3000/products';
         
-        //CREATE DE LAS OPERACIONES CRUD
-        this.httpClient.post<Product>(url, product)
-        .subscribe(data => console.log(data));
-        
-        // El objeto se puede enviar al  backend
-        // httpClient.post
-
+        if(this.isUpdate){
+          // ACTUALIZAR UN PRODUCTO EXISTENTE
+          const urlForUpdate = 'http://localhost:3000/products/' + product.id;
+          this.httpClient.put<Product>(urlForUpdate, product).subscribe(data => console.log(data));
+        } else {
+          // CREAR UN NUEVO PRODUCTO
+          const url = 'http://localhost:3000/products';
+          this.httpClient.post<Product>(url, product).subscribe(data => console.log(data));
         }
-
-
-}
+  
+      }
+  }
