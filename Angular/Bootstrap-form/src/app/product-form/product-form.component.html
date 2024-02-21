@@ -2,7 +2,14 @@
     <div class="row">
         <div class="col">
 
-            <h1 class="mt-5">Creación de nuevo producto</h1>
+            <!-- Mostrar "creación" o "acualización" si ya existe el producto-->
+            
+            @if(isUpdate){
+                <h1 class="mt-5">Actualizar/Editar producto existente</h1> 
+            } @else {
+                <h1 class="mt-5">Crear nuevo producto</h1>
+            }
+            
             <form class="mt-5" [formGroup]="productForm" (ngSubmit)="save()">
 
                 <!-- Campo oculto id -->

@@ -49,6 +49,8 @@ export class ProductFormComponent {
           categories: new FormControl<Category[]>([])
         });
       
+        isUpdate: boolean = false;
+
         constructor(private httpClient: HttpClient,
         private activatedRoute: ActivatedRoute) {}
 
@@ -56,9 +58,10 @@ export class ProductFormComponent {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
     let id =params['id'];
-    this.httpClient.get<Product>(`http://localhost:3000/products/${id}`)
-    .subscribe(product => {
+    this.httpClient.get<Product>(`http://localhost:3000/products/${id}`).subscribe(product => {
     
+       this.isUpdate = true;
+
       this.productForm.reset({
         id:product.id,
         title: product.title,
