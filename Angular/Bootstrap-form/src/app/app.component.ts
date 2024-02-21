@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ProductFormComponent } from "./product-form/product-form.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 
 
@@ -9,7 +9,7 @@ import { ProductFormComponent } from "./product-form/product-form.component";
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, RouterLink,]
+    imports: [RouterOutlet, RouterLink, NavbarComponent]
 })
 export class AppComponent {
   title = 'Bootstrap-form';
