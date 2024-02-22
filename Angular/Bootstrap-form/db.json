@@ -26,5 +26,23 @@
         }
       ]
     }
+  ],
+  "manufacturers": [
+  {
+    "id": 1,
+    "name": "FilaMotor",
+    "year": 2012
+  },
+  {
+    "id": 2,
+    "name": "Ford",
+    "year": 1960
+  },
+  {
+        
+    "id": 3,   
+    "name": "Tesla",
+    "year": 2003
+   }
   ]
 }
