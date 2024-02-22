@@ -45,7 +45,8 @@
                     <select class="form-select"
                     id="manufacturer"
                     formControlName="manufacturer"
-                    aria-label="Fabricante">
+                    aria-label="Fabricante"
+                    [compareWith]="compareObjects">
                     
                     <option selected>Selecciona fabricante</option>
                     
@@ -64,8 +65,9 @@
                         formControlName="categories"
                         aria-label="Categorías"
                         multiple
-                        style="min-height:160px;">
-                        
+                        style="min-height:160px;"
+                        [compareWith]="compareObjects">
+
                         <option selected>Selecciona categorías</option>
                         
                         @for (category of categories; track category.id) {

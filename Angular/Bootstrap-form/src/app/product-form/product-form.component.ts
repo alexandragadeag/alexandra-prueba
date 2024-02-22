@@ -107,4 +107,15 @@ export class ProductFormComponent {
         }
   
       }
+
+      //Crear una función para comparar objetos en el selector  para recargar objetos
+      // esto ayuda a que angular muestr qué manufacturer y categorías tienen asociadas
+      // en los selectores cuando estamos en una Actualización
+      compareObjects(o1: any, o2: any): boolean{
+        if (o1 && o2) {
+          return o1.id === o2.id;
+        } else {
+          return o1 === o2;
+        }
+      }
   }
