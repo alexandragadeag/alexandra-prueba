@@ -6,7 +6,14 @@ import { ManufacturerListComponent } from './manufacturer-list/manufacturer-list
 
 export const routes: Routes = [
    {
-    path:'',
+      path: '',
+      redirectTo: '/product-list',
+      pathMatch: 'full'
+
+   },
+   
+   {
+    path:'product-list',
     component: ProductListComponent
    },
    {
