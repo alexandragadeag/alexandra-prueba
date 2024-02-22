@@ -31,6 +31,9 @@ export const routes: Routes = [
    {
       path: 'manufacturers',
       component: ManufacturerListComponent
+   },
+   {
+      path: 'manufacturers/:id/detail',
+      component: ManufacturerListComponent
    }
-
 ];

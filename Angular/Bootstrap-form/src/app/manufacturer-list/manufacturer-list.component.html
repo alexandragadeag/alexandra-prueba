@@ -16,7 +16,7 @@
                         <p class="card-text">{{manufacturer.name}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/manufacturers', manufacturer.id, 'detail']">Ver</button>
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
                             </div>
                             <small class="text-body-secondary">{{manufacturer.year}}</small>
