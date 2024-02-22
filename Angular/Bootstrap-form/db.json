@@ -2,14 +2,14 @@
   "products": [
     {
       "id": "1",
-      "title": "prueba producto modifie",
-      "price": 4.99,
+      "title": "producto 1 modificado",
+      "price": 50,
       "available": true,
-      "publishDate": "2024-01-01T10:30",
+      "publishDate": "2024-02-21T12:02",
       "manufacturer": {
         "id": 1,
-        "name": "pepsi",
-        "year": 1920
+        "name": "FilaMotor",
+        "year": 2012
       },
       "categories": [
         {
@@ -19,30 +19,26 @@
         {
           "id": 2,
           "name": "Carne"
-        },
-        {
-          "id": 3,
-          "name": "Legumbres"
         }
       ]
     }
   ],
   "manufacturers": [
-  {
-    "id": 1,
-    "name": "FilaMotor",
-    "year": 2012
-  },
-  {
-    "id": 2,
-    "name": "Ford",
-    "year": 1960
-  },
-  {
-        
-    "id": 3,   
-    "name": "Tesla",
-    "year": 2003
-   }
+    {
+      "id": "1",
+      "name": "FilaMotor",
+      "year": 2012
+    },
+    {
+      "id": "2",
+      "name": "Ford",
+      "year": 1960
+    },
+    {
+      "id": "3",
+      "name": "Tesla",
+      "year": 2003
+    }
+    
   ]
 }
