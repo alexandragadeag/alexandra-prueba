@@ -34,14 +34,26 @@
                         Disponible para la venta
                     </label>
                 </div>
-
+                <!--
                 <div class="form-floating mb-3">
                     <input type="datetime-local" class="form-control" id="publishDate" formControlName="publishDate"
                         placeholder="">
                     <label for="publishDate">Fecha de publicación</label>
                 </div>
+                    -->
 
-                <div class="form-floating mb-3">
+        <!--Selector datepicker Ngbootstrap-->
+                <div class="input-group mb-3">
+                    <input 
+                    class="form-control" 
+                    id="publishDate"
+                    formControlName="publishDate"
+                    ngbDatepicker
+                    #d="ngbDatepicker">
+                    <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+                    </div>
+
+                    <div class="form-floating mb-3">
                     <select class="form-select"
                     id="manufacturer"
                     formControlName="manufacturer"

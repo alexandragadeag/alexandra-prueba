@@ -5,11 +5,12 @@ import { Category } from '../interfaces/category.model';
 import { Product } from '../interfaces/product.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-form',
   standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule],
+  imports: [ReactiveFormsModule,HttpClientModule, NgbDatepickerModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -73,6 +74,9 @@ export class ProductFormComponent implements OnInit{
         save(): void {
         console.log('invocando.save');
 
+        //TODO conversión entre fecha de NgBootstrap datepicker y Date
+        // esxtraer el valor de cada campo del formulario para crear un objeto Product
+        
         const product: Product = {
           id: this.productForm.get('id')?.value ?? 0,
           title: this.productForm.get('title')?.value ?? '',
