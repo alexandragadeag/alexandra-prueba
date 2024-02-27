@@ -3,12 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../interfaces/product.model';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [HttpClientModule, DatePipe, RouterLink, NgbAccordionModule],
+  imports: [HttpClientModule, DatePipe, RouterLink, NgbAccordionModule, NgbAlertModule],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })

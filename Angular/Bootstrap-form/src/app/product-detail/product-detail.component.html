@@ -1,5 +1,12 @@
 
 <div class="container mt-5">
+
+  <div class="row">
+    <ngb-alert>
+      <strong>Warning!</strong> Este producto se encuentra fuera de stock.
+    </ngb-alert>
+  </div>
+
   <div class="row">
     <div class="col-4 text-center">
 
@@ -84,7 +91,7 @@
     <div class="col">
 
   <!-- Acordeon de NgBoostrap -->
-  <h2 class="text-center">Preguntas frecuentes</h2>
+  <h2 class="text-center mb-3">Preguntas frecuentes</h2>
   <div ngbAccordion>
     <div ngbAccordionItem [collapsed]="false">
       <h2 ngbAccordionHeader>
@@ -105,9 +112,7 @@
     </div>
     <div ngbAccordionItem>
       <h2 ngbAccordionHeader>
-        <button ngbAccordionButton>
-          <span>&#9733; <b>Fancy</b> title &#9733;</span>
-        </button>
+        <button ngbAccordionButton>¿Qué costo tienen los envios </button>
       </h2>
       <div ngbAccordionCollapse>
         <div ngbAccordionBody>
