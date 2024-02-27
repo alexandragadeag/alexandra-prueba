@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Manufacturer } from '../interfaces/manufacturer.model';
 import { Category } from '../interfaces/category.model';
@@ -13,31 +13,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
-export class ProductFormComponent {
-  //Estos datos se recuperarían del BACKEND
-  //utilizando un SERVICIO o
-  //directamente un httpClient y peticiones GET
-
-    manufacturers: Manufacturer[] = [{
-      id: 1,
-      name: "FilaMotor",
-      year: 2012
-      }, {
-      id: 2,
-      name: "Pepsi",
-      year: 1920
-      },
-      {
-      id: 3,
-      name: "Coca Cola",
-      year: 1915
-      }
-      ];
-      categories: Category[] = [
-        { id: 1, name: "Bebidas"},
-        { id: 2, name: "Carne"},
-        { id: 3, name: "Legumbres"},
-        { id: 4, name: "Vegan"}];
+export class ProductFormComponent implements OnInit{
+  
+    // rellenar estos arrays en ngOnInit
+    manufacturers: Manufacturer[] = [];
+    categories: Category[] = [];
 
         productForm = new FormGroup({
           id: new FormControl(),
@@ -58,6 +38,17 @@ export class ProductFormComponent {
 
 
   ngOnInit(): void {
+    // recuperar los manufacturer
+    const url ='http://localhost:3000/manufacturers'
+    this.httpClient.get<Manufacturer[]>(url)
+              .subscribe(manufacturers => this.manufacturers = manufacturers);
+
+    // recuperar categories del backend
+    const urlCat = 'http://localhost:3000/categories'
+    this.httpClient.get<Category[]>(url)
+               .subscribe(categories => this.categories = categories);
+
+
     this.activatedRoute.params.subscribe(params => {
     let id =params['id'];
     this.httpClient.get<Product>(`http://localhost:3000/products/${id}`).subscribe(product => {

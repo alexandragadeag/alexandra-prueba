@@ -7,14 +7,16 @@ import { Manufacturer } from '../interfaces/manufacturer.model';
 @Component({
   selector: 'app-manufacturer-detail',
   standalone: true,
+  //IMPORTANTE agregar NgbCarouselModule para poder mostrar el carousel de ngbootstrap
   imports: [HttpClientModule, RouterLink, NgbCarouselModule],
   templateUrl: './manufacturer-detail.component.html',
   styleUrl: './manufacturer-detail.component.css'
 })
 export class ManufacturerDetailComponent implements OnInit{
 
+  // este manufacturer tiene un array de imágenes dentro
   manufacturer: Manufacturer | undefined;
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
+ 
 
 
   constructor(private http: HttpClient,
