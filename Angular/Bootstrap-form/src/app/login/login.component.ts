@@ -34,7 +34,7 @@ export class LoginComponent {
    let url = 'http://localhost:3000/login';
    this.httpClient.post<login>(url, login)
    .subscribe(res =>{
-     // La respuesta tendrá un token 
+     // La respuesta tendrá un token JWT que podríamos 
      // guardar en localStorage
     console.log(res);
 
