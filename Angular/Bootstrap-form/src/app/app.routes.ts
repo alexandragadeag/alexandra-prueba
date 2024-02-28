@@ -4,6 +4,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ManufacturerListComponent } from './manufacturer-list/manufacturer-list.component';
 import { ManufacturerDetailComponent } from './manufacturer-detail/manufacturer-detail.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   // Listado de productos
@@ -38,5 +39,10 @@ export const routes: Routes = [
   { // http://localhost:4200/manufacturers/20/detail
     path: 'manufacturers/:id/detail',
     component: ManufacturerDetailComponent
+  },
+  {
+  path: 'login',
+  component: LoginComponent
   }
+
 ];
