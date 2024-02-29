@@ -11,4 +11,11 @@ export class AppController {
     //this.appService.getHello();
 
   }
+
+  @Get('prueba')
+  prueba(): string {
+    return "Pruebas desde NestJs ";
+  }
+
+
 }
