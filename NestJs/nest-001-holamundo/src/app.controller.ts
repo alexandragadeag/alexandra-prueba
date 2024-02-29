@@ -7,6 +7,8 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return "Hola mundo soy un controlador de NestJs"
+    //this.appService.getHello();
+
   }
 }
