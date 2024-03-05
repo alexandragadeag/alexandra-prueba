@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { Book } from './book.model';
 
 @Controller('book')
@@ -40,9 +40,17 @@ findAll(): Book[] {
        id: id,
        title:'book',
        price: 20.0
-       
+
       }
       return bookDemo;
 
+    }
+
+    // http://localhost:3000/book enviando un objeto en Body
+    @Post()
+    create(@Body() book: Book) {
+       // guardar el book en base de datos
+       console.log(book);
+       return book;
     }
 }
