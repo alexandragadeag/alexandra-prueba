@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { Book } from './book.model';
 
 @Controller('book')
@@ -45,12 +45,33 @@ findAll(): Book[] {
       return bookDemo;
 
     }
-
+    
+    // POST Se usa para crear nuevos libros en base de datos 
     // http://localhost:3000/book enviando un objeto en Body
+    // Body es el cuerpo de la petición 
     @Post()
     create(@Body() book: Book) {
        // guardar el book en base de datos
        console.log(book);
        return book;
     }
+
+    // PUT se usa para actualizar un libro existente en base de datos 
+    // http://localhost:3000/book/3
+    // ParseIntPipe lo convierte de string a number 
+    // POST sería para crear un nuevo objeto que no existía antes
+    // PUT sería una actualización completa de un objeto
+    // PATCH sería una actualización parcial solo de algunos atributos de un objeto de forma variable
+    @Put(':id')
+    update(
+        @Param('id', ParseIntPipe) id: number,
+        @Body() book: Book) {
+
+            console.log(id);
+            console.log(book);
+            // Buscar y actualizar en base de datos
+            return book;
+        
+    }
+
 }
