@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { Book } from './book.model';
 
 @Controller('book')
@@ -71,6 +71,21 @@ findAll(): Book[] {
             console.log(book);
             // Buscar y actualizar en base de datos
             return book;
+        
+    }
+
+    // DELETE se usa para borrar
+    @Delete(':id')
+    @HttpCode(204) // por defecto devuelva status 204 no content
+    deleteById(
+        @Param('id', ParseIntPipe) id:number
+    ) {
+       console.log(id);
+       // comprobar si existe el libro 
+       // borrarlo si existe
+
+       //throw new NotFoundException('Libro no encontrado');
+       //throw new ConflictException('No se puede borrar libro porque tiene elements asociados');
         
     }
 
