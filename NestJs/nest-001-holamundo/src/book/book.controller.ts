@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { Book } from './book.model';
 
 @Controller('book')
@@ -29,4 +29,20 @@ findAll(): Book[] {
 
 
    }
+
+   // http://localhost:3000/book/4
+   @Get(':id')  // :id es una variable 
+   findById(
+    @Param('id', ParseIntPipe) id:number
+    ) {
+    console.log(id);
+    let bookDemo: Book = {
+       id: id,
+       title:'book',
+       price: 20.0
+       
+      }
+      return bookDemo;
+
+    }
 }
