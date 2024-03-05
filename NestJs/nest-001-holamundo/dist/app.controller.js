@@ -19,6 +19,9 @@ let AppController = class AppController {
     getHello() {
         return "Hola mundo soy un controlador de NestJs";
     }
+    prueba() {
+        return "Pruebas desde NestJs ";
+    }
 };
 exports.AppController = AppController;
 __decorate([
@@ -27,6 +30,12 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
+__decorate([
+    (0, common_1.Get)('prueba'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AppController.prototype, "prueba", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])
