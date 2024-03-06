@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { Category } from './category.model';
 
 @Controller('category')
@@ -39,11 +39,25 @@ export class CategoryController {
     }
 
 
-    // findBy..
-
     // create
+    @Post()
+    create(@Body() category: Category) {
+        // lo normal es que este objeto category venga sin id
+        // lo guardamos en base de datos con un Repository
+        // eso genere un nuevo id
+        // devolvemos la category con el nuevo id
+         return category;
+        
+    }
 
-    // update
+    // update sobre una categoría en concreto
+    @Put(':id')
+    update(
+        @Param('id', ParseIntPipe) id: number,
+        @Body() category: Category
+    ) {
+        return category;
+    }
 
     // delete
 }
