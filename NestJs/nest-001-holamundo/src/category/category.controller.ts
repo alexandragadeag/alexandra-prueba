@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { Category } from './category.model';
 
 @Controller('category')
@@ -59,5 +59,19 @@ export class CategoryController {
         return category;
     }
 
-    // delete
+    // delete métodos restringidos para que lo haga solo un administrador 
+    @Delete(':id')
+    deleteById(
+        @Param('id', ParseIntPipe) id:number
+    ) {
+        console.log(id);
+        // repository.delete...
+    }
+
+    @Delete()
+    deleteAll(){
+        console.log("Borrando categorías");
+
+
+    }
 }
