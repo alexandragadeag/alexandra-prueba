@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Book } from './book/book.model';
+import { BookController } from './book/book.controller';
 
 @Module({
   imports: [
@@ -16,10 +17,11 @@ import { Book } from './book/book.model';
       entities: [Book],
       synchronize: true, // generar tablas en base de datos 
       logging: true
-    })
+    }),
+    TypeOrmModule.forFeature([Book]) // Esto permite acceder a Repository
 
   ],
-  controllers: [AppController],
+  controllers: [AppController, BookController],
   providers: [AppService],
 })
 export class AppModule {}
