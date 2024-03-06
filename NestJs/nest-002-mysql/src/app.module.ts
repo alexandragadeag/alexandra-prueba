@@ -11,7 +11,7 @@ import { Book } from './book/book.model';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'maricarmen27',
+      password: 'admin1234',
       database: 'nest', // crear esta base de datos en MYSQL primero 
       entities: [Book],
       synchronize: true, // generar tablas en base de datos 
