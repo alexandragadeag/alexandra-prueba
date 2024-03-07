@@ -1,4 +1,4 @@
-import { Body, Controller, Get, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, ConflictException, Controller, Delete, Get, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Between, Repository } from 'typeorm';
 import { Book } from './book.model';
@@ -85,4 +85,33 @@ export class BookController {
         return this.bookRepository.save(book);
         
     }
-}
+
+    //Delete
+    @Delete(':id')
+    async deleteById(
+        @Param('id', ParseIntPipe) id: number
+    ) {
+
+        const exists = await this.bookRepository.existsBy({
+            id: id
+        });
+
+        if (!exists){
+            throw new NotFoundException('Book not found');
+
+        }
+        
+        try {
+        this.bookRepository.delete(id);
+    } catch(error) {
+        throw new ConflictException('No se puede borrar.');
+
+      }
+    
+      }
+
+    }
+
+
+
+
