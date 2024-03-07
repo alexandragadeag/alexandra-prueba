@@ -13,7 +13,7 @@ export class Book {
     isbn: string;
 
     @Column({name: 'pages', type: 'int', unsigned: true, default: 0})
-    quantity: number;
+    numPages: number;
 
     @CreateDateColumn()
     createDate: Date;

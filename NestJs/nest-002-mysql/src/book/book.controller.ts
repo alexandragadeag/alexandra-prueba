@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Between, Repository } from 'typeorm';
 import { Book } from './book.model';
@@ -59,6 +59,29 @@ export class BookController {
 
     @Post()
     create (@Body() book: Book) {
+        return this.bookRepository.save(book);
+        
+    }
+    
+
+    // async viene de asíncrono, para poder ejecutar await
+    @Put(':id')
+     async update(
+        @Param('id', ParseIntPipe) id: number,
+        @Body() book: Book
+
+    ) {
+
+        // await espera a que el método  existsBy termine ya que devuelve Promise<boolean>
+        const exists = await this.bookRepository.existsBy({
+            id: id
+        });
+
+        if (!exists){
+            throw new NotFoundException('Book not found');
+
+        }
+
         return this.bookRepository.save(book);
         
     }
