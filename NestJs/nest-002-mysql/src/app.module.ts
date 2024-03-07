@@ -20,7 +20,7 @@ import { AuthorController } from './author/author.controller';
       synchronize: true, // generar tablas en base de datos 
       logging: true
     }),
-    TypeOrmModule.forFeature([Book]) // Esto permite acceder a Repository
+    TypeOrmModule.forFeature([Book, Author]) // Esto permite acceder a Repository
 
   ],
   controllers: [AppController, BookController, AuthorController],

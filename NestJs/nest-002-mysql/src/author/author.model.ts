@@ -13,7 +13,7 @@ export class Author {
     lastName: string;
 
     @Column({type: 'date'}) // sin hora ni minuto 
-    birhDate: Date;
+    birhtDate: Date;
 
     @Column()
     salary: number;
