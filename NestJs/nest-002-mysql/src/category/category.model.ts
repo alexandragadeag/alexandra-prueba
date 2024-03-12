@@ -10,7 +10,8 @@ export class Category {
 
     @Column({length: 1000})
     description: string;
-
+    
+    // https://placehold.co/600x400
     @Column()
     photo: string;
 

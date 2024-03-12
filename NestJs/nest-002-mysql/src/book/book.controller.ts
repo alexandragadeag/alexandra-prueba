@@ -19,10 +19,29 @@ export class BookController {
     @Get(':id') // :id es una variable, parámetro en la url
     findById(@Param('id', ParseIntPipe) id: number) {
         return this.bookRepository.findOne({
+            // esta opción es para aplicaciones más grandes  
+            //relations: {
+                //author: true
+              //},
             where: {
                 id: id
             }
         });
+    }
+    
+    // Sirve para la pantalla de author-detail para mostrar los libros del autor
+    // Filtrar libros por autor
+    @Get('filter-by-author/:id')
+    findByAuthorId(@Param('id', ParseIntPipe) id:number) {
+          return this.bookRepository.find({
+            where: {
+                author: {
+                    id: id
+                }
+
+            }
+        });
+           
     }
 
     @Get('filter-by-title/:title')
