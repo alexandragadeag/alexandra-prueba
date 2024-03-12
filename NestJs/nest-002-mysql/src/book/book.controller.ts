@@ -44,6 +44,19 @@ export class BookController {
            
     }
 
+    // filtrar por editorial
+    @Get('filer-by-editorial/:id')
+    findByEditorialId(@Param('id', ParseIntPipe) id:number) {
+        return this.bookRepository.find({
+            where: {
+                editorial: {
+                    id: id
+                }
+            }
+        });
+    }
+    
+
     @Get('filter-by-title/:title')
     findByTitle(@Param('title') title:string) {
         return this.bookRepository.find({

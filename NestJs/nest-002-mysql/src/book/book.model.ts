@@ -1,5 +1,6 @@
 import { Author } from "src/author/author.model";
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Editorial } from "src/editorial/editorial.model";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Book {
@@ -34,6 +35,10 @@ export class Book {
     // eager false hace que no traiga la asociación, RECOMENDADO en aplicaciones grandes para optimizar consultas
     @ManyToOne(() => Author, { eager:true})
     author: Author;
+
+    @ManyToOne(() => Editorial, {eager: true})
+    @JoinColumn({name: 'id_editorial'}) // opcional, cambia el nombre
+    editorial: Editorial;
 
 
 }
