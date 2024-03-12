@@ -1,6 +1,7 @@
 import { Author } from "src/author/author.model";
+import { Category } from "src/category/category.model";
 import { Editorial } from "src/editorial/editorial.model";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Book {
@@ -39,6 +40,10 @@ export class Book {
     @ManyToOne(() => Editorial, {eager: true})
     @JoinColumn({name: 'id_editorial'}) // opcional, cambia el nombre
     editorial: Editorial;
+    
+    @ManyToMany(() => Category, { eager: true})
+    @JoinTable()
+    categories: Category[]; //varias categorías
 
 
 }
