@@ -6,6 +6,7 @@ import { Book } from './book/book.model';
 import { BookController } from './book/book.controller';
 import { Author } from './author/author.model';
 import { AuthorController } from './author/author.controller';
+import { Category } from './category/category.model';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { AuthorController } from './author/author.controller';
       username: 'root',
       password: 'admin1234',
       database: 'nest', // crear esta base de datos en MYSQL primero 
-      entities: [Book, Author],
+      entities: [Book, Author, Category],
       synchronize: true, // generar tablas en base de datos 
       logging: true
     }),
