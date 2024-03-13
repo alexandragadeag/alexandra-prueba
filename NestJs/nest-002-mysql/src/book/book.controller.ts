@@ -1,4 +1,4 @@
-import { Body, ConflictException, Controller, Delete, Get, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, ConflictException, Controller, Delete, Get, NotFoundException, Param, ParseEnumPipe, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Between, Repository } from 'typeorm';
 import { Book } from './book.model';
@@ -54,6 +54,19 @@ export class BookController {
                 }
             }
         });
+    }
+
+    // Filtrar por categoría
+    @Get('filter-by-category/:id')
+    findByCategory(@Param('id', ParseIntPipe) id:number) {
+        return this.bookRepository.find({
+           where: {
+               categories: {
+                   id: id
+               }
+           }
+        });
+
     }
     
 
