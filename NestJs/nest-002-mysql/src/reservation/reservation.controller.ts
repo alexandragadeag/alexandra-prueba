@@ -67,7 +67,7 @@ findWithFilter(@Query() filters: any) {
 
 @Post()
 create(@Body() reservation: Reservation)  {
-    this.reservationRepo.save(reservation);
+    return this.reservationRepo.save(reservation);
 }
 
 
