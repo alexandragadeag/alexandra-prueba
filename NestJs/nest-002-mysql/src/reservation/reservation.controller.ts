@@ -1,4 +1,4 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Query } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Reservation } from './reservation.model';
 import { Repository } from 'typeorm';
@@ -18,7 +18,7 @@ findAll() {
 }
 
 // findById
-@Get(':id')
+@Get('filter-by-id/:id')
 findById(@Param('id', ParseIntPipe)id: number) {
     return this.reservationRepo.findOne({
       where: {
@@ -49,10 +49,30 @@ findByBookId(@Param('id', ParseIntPipe) id: number){
       });
 }
 
-// query params
+// Filtro dinámico para soportar múltiples parámetros al filtrar
+@Get('filter')
+findWithFilter(@Query() filters: any) {
+      console.log(filters);
+
+      // si está vacio devolver .find() sin filtro
+      if(Object.keys(filters).length === 0)
+           return this.reservationRepo.find();
+
+    // si no está vacio entonces filtrar:
+    return this.reservationRepo.find({
+        where: filters
+    });
+
+}
+
+@Post()
+create(@Body() reservation: Reservation)  {
+    this.reservationRepo.save(reservation);
+}
 
 
 
-// create
+
+
 
 }
