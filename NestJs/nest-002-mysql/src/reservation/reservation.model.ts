@@ -17,10 +17,10 @@ export class Reservation {
     @Column({type: 'decimal', precision: 14, scale: 2})
     price:number;
 
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, {eager: true})
     user: User;
 
-    @ManyToOne(() => Book)
+    @ManyToOne(() => Book, {eager: true})
     book: Book;
 
 
