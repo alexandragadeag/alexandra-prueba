@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-12">
   
-        <h1 class="mt-5">Listado de libros <i class="bi bi-book"></i></h1>
+        <h1 class="mt-5">Listado de libros</h1>
   
         <button class="btn btn-primary"
         routerLink="/books/create">Crear libro</button>
@@ -13,7 +13,7 @@
               <th scope="col">Id</th>
               <th scope="col">Título</th>
               <th scope="col">Isbn</th>
-              <th scope="col">Número de páginas</th>
+              <th scope="col">Número páginas</th>
               <th scope="col">Publicado</th>
               <th scope="col">Precio</th>
               <th scope="col">Autor</th>
@@ -30,35 +30,32 @@
               <td>{{book.isbn}}</td>
               <td>{{book.numPages}}</td>
               <td>
-                <td>
-                    @if (book.published) {
-                    <span class="badge text-bg-success">Sí</span>
-                    } @else {
-                    <span class="badge text-bg-danger">No</span>
-                    }
-                </td>
-                <td>{{book.price}}</td>
-              
-        
+                @if (book.published) {
+                  <span class="badge text-bg-success">Sí</span>
+                } @else {
+                  <span class="badge text-bg-danger">No</span>
+                }
+              </td>
+              <td>{{book.price}}</td>
+  
               <td>
                 <a [routerLink]="['/authors', book.author.id, 'detail']">
-                {{book.author.firstName}}
-                </a>
-              </td>
-
-              <td>
-                <a [routerLink]="['/editorials', book.editorial.id, 'detail']">
-                {{book.editorial.name}}
+                  {{book.author.firstName}}
                 </a>
               </td>
   
-              <!-- Asociación Many To Many requiere bucle for -->
+              <td>
+                <a [routerLink]="['/editorials', book.editorial.id, 'detail']">
+                  {{book.editorial.name}}
+                </a>
+              </td>
+  
               <td>
                 @for (category of book.categories; track category.id) {
-                  <a class="badge text-bg-secondary me-2 "
+                  <a class="badge text-bg-secondary me-2"
                   [routerLink]="['/categories', category.id, 'detail']">
                     {{category.title}}
-                    </a>
+                  </a>
                 }
               </td>
   
@@ -69,10 +66,9 @@
                 <button class="btn btn-success me-2" [routerLink]="['/books', book.id, 'update']">
                   Editar
                 </button>
-                <button class="btn btn-success me-2" (cilck)="delete(book)">
-                    borrar
-                  </button>
-  
+                <button class="btn btn-danger me-2" (click)="delete(book)">
+                  Borrar
+                </button>
   
               </td>
             </tr>
