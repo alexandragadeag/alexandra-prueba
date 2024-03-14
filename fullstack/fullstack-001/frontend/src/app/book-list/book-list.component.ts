@@ -15,17 +15,21 @@ export class BookListComponent implements OnInit {
 
   books: Book[] = [];
   showDeletedMessage: boolean = false;
-
+  
   constructor(private httpClient: HttpClient){}
   
   ngOnInit(): void {
-    this.httpClient.get<Book[]>('http://localhost:3000/book')
-    .subscribe(booksFromBackend => this.books = booksFromBackend);
-    
+  this.loadBooks();
+  }
+  loadBooks() {
+  this.httpClient.get<Book[]>('http://localhost:3000/book')
+  .subscribe(booksFromBackend => this.books = booksFromBackend);
   }
   delete(book: Book) {
-    this.httpClient.delete('http://localhost:3000/book' + book.id)
-    .subscribe(response => this.showDeletedMessage = true);
+  this.httpClient.delete('http://localhost:3000/book/' + book.id)
+  .subscribe(response => {
+  this.showDeletedMessage = true;
+  this.loadBooks();
+  });
   }
-
-}
+  }
