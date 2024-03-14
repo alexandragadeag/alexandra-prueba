@@ -1,3 +1,4 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { Author } from "src/author/author.model";
 import { Category } from "src/category/category.model";
 import { Editorial } from "src/editorial/editorial.model";
@@ -6,9 +7,11 @@ import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, Ma
 @Entity()
 export class Book {
 
+    @ApiProperty({example: 2})
     @PrimaryGeneratedColumn()
     id: number;
-
+    
+    @ApiProperty({example: "Libro 2"})
     @Column()
     title: string;
     
