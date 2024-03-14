@@ -19,10 +19,13 @@ export class BookListComponent implements OnInit {
   constructor(private httpClient: HttpClient){}
   
   ngOnInit(): void {
+    this.httpClient.get<Book[]>('http://localhost:3000/book')
+    .subscribe(booksFromBackend => this.books = booksFromBackend);
     
   }
-  delete(){
-
+  delete(book: Book) {
+    this.httpClient.delete('http://localhost:3000/book' + book.id)
+    .subscribe(response => this.showDeletedMessage = true);
   }
 
 }

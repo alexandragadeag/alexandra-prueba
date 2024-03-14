@@ -1,1 +1,84 @@
-<p>book-list works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+  
+        <h1 class="mt-5">Listado de libros <i class="bi bi-book"></i></h1>
+  
+        <button class="btn btn-primary"
+        routerLink="/books/create">Crear libro</button>
+  
+        <table class="table table-striped mt-5">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Título</th>
+              <th scope="col">Isbn</th>
+              <th scope="col">Número de páginas</th>
+              <th scope="col">Publicado</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Editorial</th>
+              <th scope="col">Categorías</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for(book of books; track book.id) {
+            <tr>
+              <td>{{book.id}}</td>
+              <td>{{book.title}}</td>
+              <td>{{book.isbn}}</td>
+              <td>{{book.numPages}}</td>
+              <td>
+                <td>
+                    @if (book.published) {
+                    <span class="badge text-bg-success">Sí</span>
+                    } @else {
+                    <span class="badge text-bg-danger">No</span>
+                    }
+                </td>
+                <td>{{book.price}}</td>
+              
+        
+              <td>
+                <a [routerLink]="['/authors', book.author.id, 'detail']">
+                {{book.author.firstName}}
+                </a>
+              </td>
+
+              <td>
+                <a [routerLink]="['/editorials', book.editorial.id, 'detail']">
+                {{book.editorial.name}}
+                </a>
+              </td>
+  
+              <!-- Asociación Many To Many requiere bucle for -->
+              <td>
+                @for (category of book.categories; track category.id) {
+                  <a class="badge text-bg-secondary me-2 "
+                  [routerLink]="['/categories', category.id, 'detail']">
+                    {{category.title}}
+                    </a>
+                }
+              </td>
+  
+              <td>
+                <button class="btn btn-success me-2" [routerLink]="['/books', book.id, 'detail']">
+                  Ver detalle
+                </button>
+                <button class="btn btn-success me-2" [routerLink]="['/books', book.id, 'update']">
+                  Editar
+                </button>
+                <button class="btn btn-success me-2" (cilck)="delete(book)">
+                    borrar
+                  </button>
+  
+  
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
