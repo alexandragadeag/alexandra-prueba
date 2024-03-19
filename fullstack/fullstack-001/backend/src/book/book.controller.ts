@@ -57,7 +57,7 @@ export class BookController {
     }
 
     // Filtrar por categoría
-    @Get('filter-by-category/:id')
+    @Get('filter-by-category-id/:id')
     findByCategory(@Param('id', ParseIntPipe) id:number) {
         return this.bookRepository.find({
            where: {
