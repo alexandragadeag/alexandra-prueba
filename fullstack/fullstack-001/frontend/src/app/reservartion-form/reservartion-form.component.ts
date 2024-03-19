@@ -14,11 +14,13 @@ import { Book } from '../interfaces/book.model';
 export class ReservartionFormComponent implements OnInit{
 
   book: Book | undefined;
+  price = 0;
+
   reservationForm = new FormGroup({
-    id: new FormControl<number>(0),
+    //id: new FormControl<number>(0),
     startDate: new FormControl<Date>(new Date()),
     endDate: new FormControl<Date>(new Date()),
-    price: new FormControl<number>(0)
+    //price: new FormControl<number>(0)
   });
 
   constructor(
@@ -34,6 +36,17 @@ export class ReservartionFormComponent implements OnInit{
 
       this.httpClient.get<Book>("http://localhost:3000/book/")
     });
+  }
+
+  calculatePrice() {
+    //calculodel precio total
+    console.log("Calculando precio");
+    this.price = 80;
+  }
+
+  save() {
+
+
   }
 
 }

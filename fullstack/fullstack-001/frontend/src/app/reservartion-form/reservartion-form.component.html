@@ -1,1 +1,30 @@
-<p>reservartion-form works!</p>
+<div classs="container">
+    <div class="row">
+      <div class="col-lg-10">
+
+        <form class="mt-5"
+        [formGroup]="reservationForm"
+        (ngSubmit)="save()">
+
+        <div class="form-floating mb-3">
+          <input type="date" class="form-control"
+          id="startDate" formControlName="startDate"
+          placeholder="yyyy-mm-dd">
+          <label for="startDate">Fecha de inciio</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control"
+            id="endDate" formControlName="endDate"
+            placeholder="yyyy-mm-dd" (change)="calculatePrice()">
+            <label for="endDate">Fecha fin</label>
+          </div>
+    
+       
+         </form>
+
+
+      </div>
+    </div>
+
+</div>
