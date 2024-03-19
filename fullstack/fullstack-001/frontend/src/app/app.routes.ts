@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookFormComponent } from './book-form/book-form.component';
+import { CategoryDetailComponent } from './category-detail/category-detail.component';
 
 export const routes: Routes = [
     {
@@ -26,4 +27,8 @@ export const routes: Routes = [
         path: 'books/:id/update',
         component: BookFormComponent
     },
+    {
+        path: 'categories/:id/detail',
+        component: CategoryDetailComponent
+    }
 ];

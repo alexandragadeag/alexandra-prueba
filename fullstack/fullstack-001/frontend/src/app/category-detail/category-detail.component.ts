@@ -30,7 +30,7 @@ export class CategoryDetailComponent implements OnInit{
           this.httpClient.get<Category>('http://localhost:3000/category/' +id)
           .subscribe(category => this.category =category);
 
-          this.httpClient.get<Book[]>('http:/localhost:3000/book/filter-by-category-id/'+ id)
+          this.httpClient.get<Book[]>('http://localhost:3000/book/filter-by-category-id/'+ id)
           .subscribe(books => this.books = books);
 
         });
