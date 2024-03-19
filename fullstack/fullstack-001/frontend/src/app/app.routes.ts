@@ -4,6 +4,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
+import { ReservartionFormComponent } from './reservartion-form/reservartion-form.component';
 
 export const routes: Routes = [
     {
@@ -30,5 +31,9 @@ export const routes: Routes = [
     {
         path: 'categories/:id/detail',
         component: CategoryDetailComponent
+    },
+    {
+        path: 'books/:id/reserve',
+        component: ReservartionFormComponent
     }
 ];

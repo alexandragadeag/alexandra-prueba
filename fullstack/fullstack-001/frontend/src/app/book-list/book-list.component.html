@@ -65,13 +65,16 @@
               </td>
   
               <td>
-                <button class="btn btn-success me-2" [routerLink]="['/books', book.id, 'detail']">
-                  Ver detalle
+                <button class="btn btn-info me-2 btn-sm" [routerLink]="['/books', book.id, 'detail']">
+                  Ver 
                 </button>
-                <button class="btn btn-success me-2" [routerLink]="['/books', book.id, 'update']">
+                <button class="btn btn-success me-2 btn-sm" [routerLink]="['/books', book.id, 'update']">
                   Editar
                 </button>
-                <button class="btn btn-danger me-2" (click)="delete(book)">
+                <button class="btn btn-warning me-2 btn-sm" [routerLink]="['/books', book.id, 'reserve']">
+                  Reservar
+                </button>
+                <button class="btn btn-danger me-2 btn-sm" (click)="delete(book)">
                   Despublicar
                 </button>
   
