@@ -9,7 +9,7 @@
 
 
         @if (showDeletedMessage) {
-          <ngb-alert type="success" (closed)="closeMessage()">Libro borrado correctamente.</ngb-alert>
+          <ngb-alert type="success" (closed)="closeMessage()">Libro despublicado correctamente.</ngb-alert>
         }
 
         <table class="table table-striped mt-5">
@@ -72,7 +72,7 @@
                   Editar
                 </button>
                 <button class="btn btn-danger me-2" (click)="delete(book)">
-                  Borrar
+                  Despublicar
                 </button>
   
               </td>
