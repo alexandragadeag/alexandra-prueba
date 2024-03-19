@@ -6,7 +6,12 @@
   
         <button class="btn btn-primary"
         routerLink="/books/create">Crear libro</button>
-  
+
+
+        @if (showDeletedMessage) {
+          <ngb-alert type="success" (closed)="closeMessage()">Libro borrado correctamente.</ngb-alert>
+        }
+
         <table class="table table-striped mt-5">
           <thead>
             <tr>

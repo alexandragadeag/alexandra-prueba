@@ -32,4 +32,7 @@ export class BookListComponent implements OnInit {
   this.loadBooks();
   });
   }
+  closeMessage() {
+    this.showDeletedMessage = false;
+  }
   }
