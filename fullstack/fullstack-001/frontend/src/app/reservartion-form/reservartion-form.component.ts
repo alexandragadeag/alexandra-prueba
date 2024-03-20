@@ -20,6 +20,7 @@ export class ReservartionFormComponent implements OnInit{
   price = 0;
   numDays = 0;
   showConfirmMessage = false;
+  reservation: Reservation | undefined;
 
   reservationForm = new FormGroup({
     //id: new FormControl<number>(0),
@@ -96,6 +97,8 @@ export class ReservartionFormComponent implements OnInit{
     .subscribe(reservation =>{
       console.log(reservation);
       this.showConfirmMessage = true;
+      this.reservation = reservation;
+      
 
 
     });
