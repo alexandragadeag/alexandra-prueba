@@ -21,12 +21,21 @@
         <label for="endDate">Fecha fin</label>
       </div>
 
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox"
+          id="premiumShip" formControlName="premiumShip" (change)="calculatePrice()">
+
+          <label class="form-check-label" for="premiumShip">
+            Envío premium 4,99 € (Menos de 24 horas)
+          </label>
+        </div>
+
         </form>
 
     </div>
 
     <div class="col-md-5 col-lg-4 order-md-last">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
+      <h4 class="mt-5 d-flex justify-content-between align-items-center mb-3">
         <span class="text-primary">Tu reserva</span>
         <span class="badge bg-primary rounded-pill">{{numDays}} días</span>
       </h4>
@@ -76,3 +85,4 @@
       </form>
     </div>
   </div>
+</div>

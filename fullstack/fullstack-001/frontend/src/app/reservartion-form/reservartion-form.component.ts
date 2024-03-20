@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Book } from '../interfaces/book.model';
+import { Reservation } from '../interfaces/reservation.model';
 
 @Component({
   selector: 'app-reservartion-form',
@@ -21,6 +22,7 @@ export class ReservartionFormComponent implements OnInit{
     //id: new FormControl<number>(0),
     startDate: new FormControl<Date>(new Date()),
     endDate: new FormControl<Date>(new Date()),
+    premiumShip: new FormControl<boolean>(false)
     //price: new FormControl<number>(0)
   });
 
@@ -35,7 +37,7 @@ export class ReservartionFormComponent implements OnInit{
       const id = params['id'];
       if(!id) return;
 
-      this.httpClient.get<Book>("http://localhost:3000/book/" + id)
+      this.httpClient.get<Book>('http://localhost:3000/book/' + id)
       .subscribe(book => this.book = book);
     });
   }
@@ -65,12 +67,30 @@ export class ReservartionFormComponent implements OnInit{
     
     this.price = this.numDays * this.book.price;
     
-    // const isPremiumShip = this.reservationForm.get('premiumShip')?.value
-    // if (isPremiumShip)
-    // this.price += 4.99;
+     const isPremiumShip = this.reservationForm.get('premiumShip')?.value;
+     console.log(isPremiumShip);
+
+     if (isPremiumShip)
+     this.price += 4.99;
+
+       //Agregar más condiciones...
+
     }
 
   save() {
+
+    // extraer los datos del formulario, crear un objeto reserva
+    const reserva: Reservation = {
+      id: 0,
+      startDate: this.reservationForm.get('startDate')?.value ?? new Date(),
+      endDate: this.reservationForm.get('endDate')?.value ?? new Date(),
+      price: this.price,
+      book: this.book
+    };
+
+    // enviar al backend con método POST
+    // this.httpClient.post
+
 
   }
 

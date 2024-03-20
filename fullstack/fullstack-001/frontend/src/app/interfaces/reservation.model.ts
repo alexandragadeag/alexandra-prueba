@@ -8,5 +8,5 @@ export interface Reservation {
     price: number;
     // opcional
     user?: User;
-    book: Book;
+    book?: Book;
 }
