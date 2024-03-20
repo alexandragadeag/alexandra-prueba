@@ -15,6 +15,7 @@ export class ReservartionFormComponent implements OnInit{
 
   book: Book | undefined;
   price = 0;
+  numDays = 0;
 
   reservationForm = new FormGroup({
     //id: new FormControl<number>(0),
@@ -34,18 +35,42 @@ export class ReservartionFormComponent implements OnInit{
       const id = params['id'];
       if(!id) return;
 
-      this.httpClient.get<Book>("http://localhost:3000/book/")
+      this.httpClient.get<Book>("http://localhost:3000/book/" + id)
+      .subscribe(book => this.book = book);
     });
   }
-
+  /*
+  Calcula el precio total para la reserva en base a la cantidad de días
+  seleccionados por el usuario y el precio por día del libro a reservar 
+  */
   calculatePrice() {
-    //calculodel precio total
-    console.log("Calculando precio");
-    this.price = 80;
-  }
+
+    let startDate = this.reservationForm.get('startDate')?.value;
+    let endDate = this.reservationForm.get('endDate')?.value;
+    
+    if (!startDate || !endDate || !this.book || !this.book.price) {
+    return; // si no hay fechas no se hace el cálculo
+    }
+    
+    startDate = new Date(startDate);
+    endDate = new Date(endDate);
+    
+    const diffMilliseconds = endDate.getTime() - startDate.getTime();
+    
+    if (diffMilliseconds <= 0) {
+    return;
+    }
+    
+    this.numDays = diffMilliseconds / (1000 * 60 * 60 * 24);
+    
+    this.price = this.numDays * this.book.price;
+    
+    // const isPremiumShip = this.reservationForm.get('premiumShip')?.value
+    // if (isPremiumShip)
+    // this.price += 4.99;
+    }
 
   save() {
-
 
   }
 
