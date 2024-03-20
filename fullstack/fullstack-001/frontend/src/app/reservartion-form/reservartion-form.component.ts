@@ -4,11 +4,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Book } from '../interfaces/book.model';
 import { Reservation } from '../interfaces/reservation.model';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-reservartion-form',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, ReactiveFormsModule],
+  imports: [HttpClientModule, RouterLink, ReactiveFormsModule, CurrencyPipe ],
   templateUrl: './reservartion-form.component.html',
   styleUrl: './reservartion-form.component.css'
 })
@@ -89,7 +90,11 @@ export class ReservartionFormComponent implements OnInit{
     };
 
     // enviar al backend con método POST
-    // this.httpClient.post
+    this.httpClient.post<Reservation>('http://localhost:3000/reservation', reserva)
+    .subscribe(reservation =>{
+      console.log(reservation);
+
+    });
 
 
   }
