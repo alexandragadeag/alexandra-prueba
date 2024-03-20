@@ -5,11 +5,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Book } from '../interfaces/book.model';
 import { Reservation } from '../interfaces/reservation.model';
 import { CurrencyPipe } from '@angular/common';
+import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reservartion-form',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, ReactiveFormsModule, CurrencyPipe ],
+  imports: [HttpClientModule, RouterLink, ReactiveFormsModule, CurrencyPipe, NgbAlert],
   templateUrl: './reservartion-form.component.html',
   styleUrl: './reservartion-form.component.css'
 })
@@ -18,6 +19,7 @@ export class ReservartionFormComponent implements OnInit{
   book: Book | undefined;
   price = 0;
   numDays = 0;
+  showConfirmMessage = false;
 
   reservationForm = new FormGroup({
     //id: new FormControl<number>(0),
@@ -93,6 +95,8 @@ export class ReservartionFormComponent implements OnInit{
     this.httpClient.post<Reservation>('http://localhost:3000/reservation', reserva)
     .subscribe(reservation =>{
       console.log(reservation);
+      this.showConfirmMessage = true;
+
 
     });
 

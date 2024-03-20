@@ -1,39 +1,47 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
+@if (showConfirmMessage) {
+   <ngb-alert type="success">
+    Se ha completado tu reserva para el libro {{book?.title}}.
 
-      <form class="mt-5"
-      [formGroup]="reservationForm"
-      (ngSubmit)="save()">
+    El libro será enviado an las próximas horas.
+   </ngb-alert>
+} @else {
+  <form class="mt-5"
+  [formGroup]="reservationForm"
+  (ngSubmit)="save()">
 
-      <h1 class="mb-3">Reserva de libro</h1>
+  <h1 class="mb-3">Reserva de libro</h1>
 
-      <div class="form-floating mb-3">
-        <input type="date" class="form-control"
-        id="startDate" formControlName="startDate"
-        placeholder="yyyy-mm-dd" (change)="calculatePrice()">
-        <label for="startDate">Fecha inicio</label>
-      </div>
+  <div class="form-floating mb-3">
+    <input type="date" class="form-control"
+    id="startDate" formControlName="startDate"
+    placeholder="yyyy-mm-dd" (change)="calculatePrice()">
+    <label for="startDate">Fecha inicio</label>
+  </div>
 
-      <div class="form-floating mb-3">
-        <input type="date" class="form-control"
-        id="endDate" formControlName="endDate"
-        placeholder="yyyy-mm-dd" (change)="calculatePrice()">
-        <label for="endDate">Fecha fin</label>
-      </div>
+  <div class="form-floating mb-3">
+    <input type="date" class="form-control"
+    id="endDate" formControlName="endDate"
+    placeholder="yyyy-mm-dd" (change)="calculatePrice()">
+    <label for="endDate">Fecha fin</label>
+  </div>
 
-        <div class="form-check mb-3">
-          <input class="form-check-input" type="checkbox"
-          id="premiumShip" formControlName="premiumShip" (change)="calculatePrice()">
+    <div class="form-check mb-3">
+      <input class="form-check-input" type="checkbox"
+      id="premiumShip" formControlName="premiumShip" (change)="calculatePrice()">
 
-          <label class="form-check-label" for="premiumShip">
-            Envío premium 4,99 € (Menos de 24 horas)
-          </label>
-        </div>
+      <label class="form-check-label" for="premiumShip">
+        Envío premium 4,99 € (Menos de 24 horas)
+      </label>
+    </div>
 
-        <button class="w-100 btn btn-primary btn-lg" type="submit">Finalizar reserva</button>
+    <button class="w-100 btn btn-primary btn-lg" type="submit">Finalizar reserva</button>
 
-        </form>
+    </form>
+
+    }  
 
     </div>
 
