@@ -12,15 +12,16 @@
             <ul class="d-flex list-unstyled mt-auto">
               <li class="me-auto">
                 <button class="btn btn-primary btn-sm" [routerLink]="['/authors', author.id, 'detail']">
-                    Ver libros
+                    Ver
+                    <i class="bi bi-arrow-right"></i>
                 </button>
               </li>
-              <li class="d-flex align-items-center me-3">
+              <!--<li class="d-flex align-items-center me-3">
                 <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
                 <small>{{author.birhtDate | date:'dd/MM/yyyy'}}</small>
-              </li>
+              </li> -->
               <li class="d-flex align-items-center">
-                <i class="bi bi-geo-alt-fill"></i>
+                <i class="bi bi-geo-alt-fill fs-5 me-2"></i>
                 <small>{{author.salary}}</small>
               </li>
             </ul>
