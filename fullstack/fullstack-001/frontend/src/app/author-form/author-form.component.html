@@ -28,6 +28,11 @@
         </div>
         <div class="col-lg-4">
 
+            @if(photoPreview) {
+                <h3 class="my-5">Previsualización de foto</h3>
+                <img class ="img-fluid" [src]="photoPreview">
+            }
+
         </div>
     </div>
 </div>

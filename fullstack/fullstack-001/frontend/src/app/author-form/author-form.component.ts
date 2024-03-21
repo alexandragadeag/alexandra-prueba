@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -25,6 +25,8 @@ export class AuthorFormComponent implements OnInit {
      photoFile: File | undefined;
      photoPreview: string | undefined;
 
+     constructor(private httpClient: HttpClient) {}
+
      ngOnInit(): void {
       
     }
@@ -45,7 +47,7 @@ export class AuthorFormComponent implements OnInit {
     }
 
     save() {
-      const author: Author = {
+      /*const author: Author = {
       id: 0,
       firstName: this.authorForm.get('firstName')?.value ?? '',
       lastName: '',
@@ -56,9 +58,23 @@ export class AuthorFormComponent implements OnInit {
       bio: '',
       wikipediaUrl: ''
       };
-      console.log(author);
+      console.log(author);*/
+
       console.log(this.photoFile);
+
+      let formData = new FormData();
+
+      if(this.photoFile)
+      formData.append('photoUrl', this.photoFile);
+      formData.append('firstName', this.authorForm.get('firstName')?.value ?? '');
       
+      this.httpClient.post('http://localhost:3000/author', formData)
+      .subscribe(author => {
+        this.photoFile = undefined;
+        this.photoPreview = undefined;
+        console.log(author);
+  
+      })
       
       }
     }
