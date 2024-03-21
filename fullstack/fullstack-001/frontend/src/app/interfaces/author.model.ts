@@ -4,4 +4,8 @@ export interface Author {
     lastName: string;
     birhtDate: Date;
     salary: number;
+    photoUrl: string;
+    country: string;
+    bio: string;
+    wikipediaUrl: string;
 }
