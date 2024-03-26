@@ -8,48 +8,46 @@ import { FileInterceptor } from '@nestjs/platform-express';
 export class AuthorController {
 
     constructor(
-        @InjectRepository(Author) private aurthorRepo: Repository<Author>
-
+        @InjectRepository(Author) private authorRepo: Repository<Author>
     ) {}
 
     @Get()
     findAll() {
-        return this.aurthorRepo.find();
+        return this.authorRepo.find();
     }
+
     @Get(':id')
     findById(@Param('id', ParseIntPipe) id: number) {
-       return this.aurthorRepo.findOne({
-         where:{
-            id: id
-         }
 
-       });
+        return this.authorRepo.findOne({
+            where: {
+                id: id
+            }
+        });
     }
-    
-    //http://localhost:3000/author/filter-full-name/alexandra/García
+
+    // http://localhost:3000/author/filter-full-name/alan/sastre
+    // http://localhost:3000/author/filter-full-name/nombre2/apellido2
     @Get('filter-full-name/:firstname/:lastname')
     findByFirstNameAndLastName(
         @Param('firstname') firstname: string,
-        @Param('lastname') lastname: string,
+        @Param('lastname') lastname: string
         ) {
-        
-        // filtrar por nombre y apellido    
-        return this.aurthorRepo.find({
-            where: {
-            
-                 firstName: firstname,
-                 lastName: lastname
 
+        // filtrar por nombre y apellido
+        return this.authorRepo.find({
+            where: {
+                firstName: firstname,
+                lastName: lastname
             }
         });
-
     }
 
     @Get('filter-by-salary/:salary')
-    findBySalary(@Param('salary', ParseFloatPipe) salary: number) {
+    findBySalary(@Param('salary', ParseFloatPipe) salary: number ) {
 
-        return this.aurthorRepo.find({
-            where:{
+        return this.authorRepo.find({
+            where: {
                 // coincidencia exacta
                 // salary: salary
 
@@ -60,25 +58,19 @@ export class AuthorController {
                 salary: "DESC"
             }
         });
-      
     }
-    
+
     // npm i -D @types/multer
     @Post()
     @UseInterceptors(FileInterceptor('file'))
-    async create(@UploadedFile() file: Express.Multer.File, @Body() author:Author) {
-            
+    async create(@UploadedFile() file: Express.Multer.File, @Body() author: Author) {
 
         if (file) {
             // guardar el archivo y obtener la url
             author.photoUrl = file.filename;
         }
-
+        
         console.log(author);
-        return await this.aurthorRepo.save(author);
-
+        return await this.authorRepo.save(author);
     }
-
-
-     
 }

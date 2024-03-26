@@ -11,79 +11,78 @@ import { Author } from '../interfaces/author.model';
   templateUrl: './author-form.component.html',
   styleUrl: './author-form.component.css'
 })
-export class AuthorFormComponent implements OnInit {
-     
-    
+export class AuthorFormComponent implements OnInit{
+
   authorForm = new FormGroup({
     id: new FormControl(0),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
-    birthDate: new FormControl(new Date()),
+    birthDate: new FormControl(),
     salary: new FormControl(0.0),
     photoUrl: new FormControl(''),
     country: new FormControl(''),
     bio: new FormControl(''),
     wikipediaUrl: new FormControl('')
-    });
+  });
 
+  photoFile: File | undefined;
+  photoPreview: string | undefined;
 
-     photoFile: File | undefined;
-     photoPreview: string | undefined;
+  constructor(private httpClient: HttpClient) {}
 
-     constructor(private httpClient: HttpClient) {}
+  ngOnInit(): void {
 
-     ngOnInit(): void {
-      
+  }
+
+  onFileChange(event: Event) {
+
+    let target = event.target as HTMLInputElement;
+
+    if (target.files !== null && target.files.length > 0) {
+      this.photoFile = target.files[0]; // extraer el primer archivo
+
+      // Opcional: Mostrar la imagen por pantalla para previsualizarla antes de subirla
+      let reader = new FileReader();
+      reader.onload = event => this.photoPreview = reader.result as string;
+      reader.readAsDataURL(this.photoFile);
     }
 
-    onFileChange(event: Event) {
-    
-      let target = event.target as HTMLInputElement;
-      
-      if (target.files !== null && target.files.length > 0) {
-        this.photoFile = target.files[0]; // extraer el primer archivo
+  }
 
-        // Opcional: Mostrar la imagen por pantalla para previsualizarla antes de subirla
-        let reader = new FileReader();
-        reader.onload = event => this.photoPreview = reader.result as string;
-        reader.readAsDataURL(this.photoFile);
-      }   
+  save() {
 
-    }
+    console.log(this.photoFile);
 
-    save() {
+    let formData = new FormData();
 
-      console.log(this.photoFile);
-      
-      let formData = new FormData();
-      
-      if(this.photoFile) // si existe foto la añado
+    if(this.photoFile) // si existe foto la añado
       formData.append('file', this.photoFile);
-      
-      formData.append('firstName', this.authorForm.get('firstName')?.value ?? '');
-      formData.append('lastName', this.authorForm.get('lastName')?.value ?? '');
-      
-      const birthDate = this.authorForm.get('birthDate')?.value;
-      if(birthDate){
-      const birthDateStr = birthDate.toISOString();
-      formData.append('birthDate', birthDateStr);
-      }
-      
-      // + '' Para conversión implítica de number a string
-      formData.append('salary', this.authorForm.get('salary')?.value + '');
-      
-      formData.append('country', this.authorForm.get('country')?.value ?? '');
-      formData.append('bio', this.authorForm.get('bio')?.value ?? '');
-      formData.append('wikipediaUrl', this.authorForm.get('wikipediaUrl')?.value ?? '');
-      
-      this.httpClient.post('http://localhost:3000/author', formData)
-      .subscribe(author => {
+
+    formData.append('firstName', this.authorForm.get('firstName')?.value ?? '');
+    formData.append('lastName', this.authorForm.get('lastName')?.value ?? '');
+
+    const birthDate = this.authorForm.get('birthDate')?.value;
+    if(birthDate){
+      console.log(birthDate);
+      console.log(typeof birthDate);
+      formData.append('birthDate', birthDate);
+    }
+
+    // + '' Para conversión implítica de number a string
+    formData.append('salary', this.authorForm.get('salary')?.value + '');
+
+    formData.append('country', this.authorForm.get('country')?.value ?? '');
+    formData.append('bio', this.authorForm.get('bio')?.value ?? '');
+    formData.append('wikipediaUrl', this.authorForm.get('wikipediaUrl')?.value ?? '');
+
+    this.httpClient.post('http://localhost:3000/author', formData)
+    .subscribe(author => {
       this.photoFile = undefined;
       this.photoPreview = undefined;
       console.log(author);
-      
-      });
-      
-      }
-    }
 
+    });
+
+  }
+
+}

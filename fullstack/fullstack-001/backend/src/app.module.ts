@@ -15,36 +15,35 @@ import { diskStorage } from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 import { extname } from 'path';
 
-
 @Module({
   imports: [
     MulterModule.register({
       storage: diskStorage({
-        // carpeta destiono donde guardar los archivos
+        // carpeta destino donde guardar los archivos
         destination: './uploads',
-        // Opcional: generar un nombre único para el archivo antes de guardarlo
+        // Opcional: generar un nombre único para el archivo antes de guardarlo:
+        // 1f82d390-d902-4aed-ad23-d543f56f2433.png
         filename: (req, file, callback) => {
           let fileName = uuidv4() + extname(file.originalname);
           callback(null, fileName);
-
         }
       })
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'localhost', 
       port: 3306,
       username: 'root',
       password: 'admin1234',
-      database: 'nest', // crear esta base de datos en MYSQL primero 
+      database: 'nest', // crear esta base de datos en MySQL primero
       entities: [Book, Author, Category, Editorial, User, Reservation],
-      synchronize: true, // generar tablas en base de datos 
+      synchronize: true, // generar tablas en base de datos
       logging: true
     }),
     TypeOrmModule.forFeature([Book, Author, Category, Editorial, User, Reservation]) // Esto permite acceder a Repository
-
+    
   ],
   controllers: [BookController, AuthorController, ReservationController, CategoryController],
-  providers: []
+  providers: [],
 })
 export class AppModule {}
