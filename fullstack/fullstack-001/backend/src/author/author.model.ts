@@ -1,33 +1,32 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-
 @Entity()
 export class Author {
-    @PrimaryGeneratedColumn() // Para que se autoincremental, el id se genere automaticamente
-    id:number;
 
-    @Column()
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column({nullable: true}) // nullable true hace que el campo sea opcional
     firstName: string;
-    
-    @Column()
+
+    @Column({nullable: true})
     lastName: string;
 
-    @Column({type: 'date'}) // sin hora ni minuto 
+    @Column({type: 'date', nullable: true}) // sin hora minuto
     birthDate: Date;
 
-    @Column()
+    @Column({nullable: true})
     salary: number;
 
-    @Column()
+    @Column({nullable: true})
     photoUrl: string;
 
-    @Column()
+    @Column({nullable: true})
     country: string;
 
-    @Column({length: 3000})
+    @Column({length: 3000, nullable: true})
     bio: string;
 
-    @Column()
+    @Column({nullable: true})
     wikipediaUrl: string;
-
 }
