@@ -14,14 +14,19 @@ import { Author } from '../interfaces/author.model';
 export class AuthorFormComponent implements OnInit {
      
     
-     authorForm = new FormGroup({
-          
-         id: new FormControl(0),
-         firstName: new FormControl(''),
-         //lastName: new FormControl(''),
-         
-    
-     });
+  authorForm = new FormGroup({
+    id: new FormControl(0),
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    birthDate: new FormControl(new Date()),
+    salary: new FormControl(0.0),
+    photoUrl: new FormControl(''),
+    country: new FormControl(''),
+    bio: new FormControl(''),
+    wikipediaUrl: new FormControl('')
+    });
+
+
      photoFile: File | undefined;
      photoPreview: string | undefined;
 
