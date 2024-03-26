@@ -52,34 +52,37 @@ export class AuthorFormComponent implements OnInit {
     }
 
     save() {
-      /*const author: Author = {
-      id: 0,
-      firstName: this.authorForm.get('firstName')?.value ?? '',
-      lastName: '',
-      birthDate: new Date(),
-      salary: 0,
-      photoUrl: '',
-      country: '',
-      bio: '',
-      wikipediaUrl: ''
-      };
-      console.log(author);*/
 
       console.log(this.photoFile);
-
+      
       let formData = new FormData();
-
-      if(this.photoFile)
+      
+      if(this.photoFile) // si existe foto la añado
       formData.append('file', this.photoFile);
+      
       formData.append('firstName', this.authorForm.get('firstName')?.value ?? '');
+      formData.append('lastName', this.authorForm.get('lastName')?.value ?? '');
+      
+      const birthDate = this.authorForm.get('birthDate')?.value;
+      if(birthDate){
+      const birthDateStr = birthDate.toISOString();
+      formData.append('birthDate', birthDateStr);
+      }
+      
+      // + '' Para conversión implítica de number a string
+      formData.append('salary', this.authorForm.get('salary')?.value + '');
+      
+      formData.append('country', this.authorForm.get('country')?.value ?? '');
+      formData.append('bio', this.authorForm.get('bio')?.value ?? '');
+      formData.append('wikipediaUrl', this.authorForm.get('wikipediaUrl')?.value ?? '');
       
       this.httpClient.post('http://localhost:3000/author', formData)
       .subscribe(author => {
-        this.photoFile = undefined;
-        this.photoPreview = undefined;
-        console.log(author);
-  
-      })
+      this.photoFile = undefined;
+      this.photoPreview = undefined;
+      console.log(author);
+      
+      });
       
       }
     }
