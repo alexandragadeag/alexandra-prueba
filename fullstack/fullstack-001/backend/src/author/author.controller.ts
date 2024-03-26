@@ -1,7 +1,8 @@
-import { Controller, Get, Param, ParseFloatPipe, ParseIntPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseFloatPipe, ParseIntPipe, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Author } from './author.model';
 import { MoreThanOrEqual, Repository } from 'typeorm';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('author')
 export class AuthorController {
@@ -61,5 +62,24 @@ export class AuthorController {
         });
       
     }
+    
+    // npm i -D @types/multer
+    @Post()
+    @UseInterceptors(FileInterceptor('file'))
+    async create(@UploadedFile() file: Express.Multer.File, @Body() author:Author) {
+         
+        console.log(file);
+        console.log(author);
+
+        if (file) {
+            // guardar el archivo y obtener la url
+            author.photoUrl = file.filename;
+        }
+
+        return await this.aurthorRepo.save(author);
+
+    }
+
+
      
 }

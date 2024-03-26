@@ -10,9 +10,26 @@ import { User } from './user/user.model';
 import { Reservation } from './reservation/reservation.model';
 import { ReservationController } from './reservation/reservation.controller';
 import { CategoryController } from './category/category.controller';
+import { MulterModule } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { v4 as uuidv4 } from 'uuid';
+import { extname } from 'path';
+
 
 @Module({
   imports: [
+    MulterModule.register({
+      storage: diskStorage({
+        // carpeta destiono donde guardar los archivos
+        destination: './uploads',
+        // Opcional: generar un nombre único para el archivo antes de guardarlo
+        filename: (req, file, callback) => {
+          let fileName = uuidv4() + extname(file.originalname);
+          callback(null, fileName);
+
+        }
+      })
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

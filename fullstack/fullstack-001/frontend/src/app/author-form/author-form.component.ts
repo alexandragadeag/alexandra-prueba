@@ -65,7 +65,7 @@ export class AuthorFormComponent implements OnInit {
       let formData = new FormData();
 
       if(this.photoFile)
-      formData.append('photoUrl', this.photoFile);
+      formData.append('file', this.photoFile);
       formData.append('firstName', this.authorForm.get('firstName')?.value ?? '');
       
       this.httpClient.post('http://localhost:3000/author', formData)
