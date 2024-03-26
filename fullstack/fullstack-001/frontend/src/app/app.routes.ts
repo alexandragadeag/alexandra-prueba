@@ -45,5 +45,9 @@ export const routes: Routes = [
     {
         path: 'authors/create',
         component: AuthorFormComponent
+    },
+    {
+        path: 'authors/:id/update',
+        component: AuthorFormComponent
     }
 ];

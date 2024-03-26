@@ -6,6 +6,10 @@
   
         <form [formGroup]="authorForm" (submit)="save()">
   
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="id" formControlName="id" readonly>
+            <label for="id">Id</label>
+          </div>
   
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="firstName" formControlName="firstName"
@@ -72,6 +76,10 @@
         @if(photoPreview) {
           <h3 class="my-5">Previsualización de foto</h3>
           <img class="img-fluid" [src]="photoPreview">
+        }
+        @if (!photoPreview && author?.photoUrl) {
+          <h3 class="my-5">Previsualización de foto</h3>
+          <img class="img-fluid" [src]="'http://localhost:3000/uploads/' + author?.photoUrl">
         }
       </div>
     </div>

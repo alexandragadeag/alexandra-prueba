@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Author } from '../interfaces/author.model';
 
 @Component({
@@ -14,7 +14,7 @@ import { Author } from '../interfaces/author.model';
 export class AuthorFormComponent implements OnInit{
 
   authorForm = new FormGroup({
-    id: new FormControl(0),
+    id: new FormControl(),
     firstName: new FormControl(''),
     lastName: new FormControl(''),
     birthDate: new FormControl(),
@@ -27,11 +27,39 @@ export class AuthorFormComponent implements OnInit{
 
   photoFile: File | undefined;
   photoPreview: string | undefined;
+  isUpdate: boolean = false;
+  author: Author | undefined;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private activatedRoute: ActivatedRoute
+    ) {}
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      const id = params['id'];
+      if(!id) {
+        return; // si no hay categoría se termina el método
+      }
 
+      this.httpClient.get<Author>(`http://localhost:3000/author/${id}`).subscribe(author => {
+        this.isUpdate = true;
+        this.author = author;
+        this.authorForm.reset({
+          id: author.id,
+          firstName: author.firstName,
+          lastName: author.lastName,
+          birthDate: author.birthDate,
+          bio: author.bio,
+          country: author.country,
+          photoUrl: author.photoUrl,
+          salary: author.salary,
+          wikipediaUrl: author.wikipediaUrl
+        });
+        // this.authorForm.patchValue(author);
+      });
+
+    });
   }
 
   onFileChange(event: Event) {
@@ -55,6 +83,8 @@ export class AuthorFormComponent implements OnInit{
 
     let formData = new FormData();
 
+    formData.append('id', this.authorForm.get('id')?.value ?? 0);
+
     if(this.photoFile) // si existe foto la añado
       formData.append('file', this.photoFile);
 
@@ -75,13 +105,24 @@ export class AuthorFormComponent implements OnInit{
     formData.append('bio', this.authorForm.get('bio')?.value ?? '');
     formData.append('wikipediaUrl', this.authorForm.get('wikipediaUrl')?.value ?? '');
 
-    this.httpClient.post('http://localhost:3000/author', formData)
-    .subscribe(author => {
-      this.photoFile = undefined;
-      this.photoPreview = undefined;
-      console.log(author);
+    if(this.isUpdate) {
+      const id =  this.authorForm.get('id')?.value;
+      this.httpClient.put('http://localhost:3000/author/' + id, formData)
+      .subscribe(author => {
+        this.photoFile = undefined;
+        this.photoPreview = undefined;
+        console.log(author);
+      });
+    } else {
+      this.httpClient.post('http://localhost:3000/author', formData)
+      .subscribe(author => {
+        this.photoFile = undefined;
+        this.photoPreview = undefined;
+        console.log(author);
 
-    });
+      });
+    }
+
 
   }
 
