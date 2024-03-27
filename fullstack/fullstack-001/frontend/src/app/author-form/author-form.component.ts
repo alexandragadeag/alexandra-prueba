@@ -90,6 +90,9 @@ export class AuthorFormComponent implements OnInit{
 
     formData.append('firstName', this.authorForm.get('firstName')?.value ?? '');
     formData.append('lastName', this.authorForm.get('lastName')?.value ?? '');
+    //Agregar foto existente en caso de estar editando un author para no perder la foto que ya tiene
+    formData.append('photoUrl', this.authorForm.get('photoUrl')?.value ?? '');
+
 
     const birthDate = this.authorForm.get('birthDate')?.value;
     if(birthDate){
@@ -107,14 +110,15 @@ export class AuthorFormComponent implements OnInit{
 
     if(this.isUpdate) {
       const id =  this.authorForm.get('id')?.value;
-      this.httpClient.put('http://localhost:3000/author/' + id, formData)
+      this.httpClient.put<Author>('http://localhost:3000/author/' + id, formData)
       .subscribe(author => {
         this.photoFile = undefined;
         this.photoPreview = undefined;
-        console.log(author);
+        this.author = author;
       });
+      
     } else {
-      this.httpClient.post('http://localhost:3000/author', formData)
+      this.httpClient.post<Author>('http://localhost:3000/author', formData)
       .subscribe(author => {
         this.photoFile = undefined;
         this.photoPreview = undefined;

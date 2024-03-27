@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseFloatPipe, ParseIntPipe, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, NotFoundException, Param, ParseFloatPipe, ParseIntPipe, Post, Put, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Author } from './author.model';
 import { MoreThanOrEqual, Repository } from 'typeorm';
@@ -71,6 +71,28 @@ export class AuthorController {
         }
         
         console.log(author);
+        return await this.authorRepo.save(author);
+    }
+
+
+    @Put(':id')
+    @UseInterceptors(FileInterceptor('file'))
+    async update(
+        @UploadedFile() file: Express.Multer.File,
+        @Param('id', ParseIntPipe) id:number,
+        @Body() author: Author
+        ) {
+            
+
+        if(!await this.authorRepo.existsBy({id: id})) {
+            throw new NotFoundException('Author not found');
+        }
+
+        if (file) {
+            // guardar el archivo y obtener la url
+            author.photoUrl = file.filename;
+        }
+        author.id = id; //Asigna para que el id para asegurar que sea numérico y actualize en lugar de intentar insertar 
         return await this.authorRepo.save(author);
     }
 }
