@@ -31,7 +31,7 @@ export class AuthorDetailComponent implements OnInit{
       this.httpClient.get<Author>('http://localhost:3000/author/' + id)
       .subscribe(author => this.author = author);
 
-      this.httpClient.get<Book[]>('http://localhost:3000/book/filter-by-author-id/'+ id)
+      this.httpClient.get<Book[]>('http://localhost:3000/book/filter-by-author/'+ id)
       .subscribe(books => this.books = books);
 
     });
