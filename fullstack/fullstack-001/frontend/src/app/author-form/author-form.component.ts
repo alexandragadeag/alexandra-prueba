@@ -11,7 +11,7 @@ import { Author } from '../interfaces/author.model';
   templateUrl: './author-form.component.html',
   styleUrl: './author-form.component.css'
 })
-export class AuthorFormComponent implements OnInit{
+export class AuthorFormComponent implements OnInit {
 
   authorForm = new FormGroup({
     id: new FormControl(),
@@ -33,12 +33,12 @@ export class AuthorFormComponent implements OnInit{
   constructor(
     private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       const id = params['id'];
-      if(!id) {
+      if (!id) {
         return; // si no hay categoría se termina el método
       }
 
@@ -79,55 +79,36 @@ export class AuthorFormComponent implements OnInit{
 
   save() {
 
-    console.log(this.photoFile);
-
     let formData = new FormData();
-
     formData.append('id', this.authorForm.get('id')?.value ?? 0);
-
-    if(this.photoFile) // si existe foto la añado
-      formData.append('file', this.photoFile);
-
     formData.append('firstName', this.authorForm.get('firstName')?.value ?? '');
     formData.append('lastName', this.authorForm.get('lastName')?.value ?? '');
-    //Agregar foto existente en caso de estar editando un author para no perder la foto que ya tiene
-    formData.append('photoUrl', this.authorForm.get('photoUrl')?.value ?? '');
-
-
-    const birthDate = this.authorForm.get('birthDate')?.value;
-    if(birthDate){
-      console.log(birthDate);
-      console.log(typeof birthDate);
-      formData.append('birthDate', birthDate);
-    }
-
-    // + '' Para conversión implítica de number a string
-    formData.append('salary', this.authorForm.get('salary')?.value + '');
-
+    formData.append('photoUrl', this.authorForm.get('photoUrl')?.value ?? ''); // Conservar photoUrl para no perder foto
+    formData.append('birthDate', this.authorForm.get('birthDate')?.value ?? '');
+    formData.append('salary', this.authorForm.get('salary')?.value + ''); // + '' Para conversión implítica de number a string
     formData.append('country', this.authorForm.get('country')?.value ?? '');
     formData.append('bio', this.authorForm.get('bio')?.value ?? '');
     formData.append('wikipediaUrl', this.authorForm.get('wikipediaUrl')?.value ?? '');
 
-    if(this.isUpdate) {
-      const id =  this.authorForm.get('id')?.value;
+    if (this.photoFile) formData.append('file', this.photoFile);
+
+    if (this.isUpdate) {
+      const id = this.authorForm.get('id')?.value;
       this.httpClient.put<Author>('http://localhost:3000/author/' + id, formData)
-      .subscribe(author => {
-        this.photoFile = undefined;
-        this.photoPreview = undefined;
-        this.author = author;
-      });
-      
+        .subscribe(author => {
+          this.photoFile = undefined;
+          this.photoPreview = undefined;
+          this.author = author;
+        });
+
     } else {
       this.httpClient.post<Author>('http://localhost:3000/author', formData)
-      .subscribe(author => {
-        this.photoFile = undefined;
-        this.photoPreview = undefined;
-        console.log(author);
-
-      });
+        .subscribe(author => {
+          this.photoFile = undefined;
+          this.photoPreview = undefined;
+          this.author = author;
+        });
     }
-
-
   }
 
 }
