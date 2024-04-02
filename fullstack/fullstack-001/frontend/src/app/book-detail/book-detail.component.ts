@@ -4,12 +4,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Book } from '../interfaces/book.model';
 import { Reservation } from '../interfaces/reservation.model';
 import { Rating } from '../interfaces/rating.model';
-import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-book-detail',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, NgbRatingModule],
-
+  imports: [HttpClientModule, RouterLink, NgbRatingModule, DatePipe],
   templateUrl: './book-detail.component.html',
   styleUrl: './book-detail.component.css'
 })
@@ -20,7 +20,9 @@ export class BookDetailComponent implements OnInit{
   ratings: Rating[] = [];
 
   constructor(private httpClient: HttpClient,
-    private activatedRoute: ActivatedRoute) {}
+    private activatedRoute: ActivatedRoute) {
+      
+    }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
