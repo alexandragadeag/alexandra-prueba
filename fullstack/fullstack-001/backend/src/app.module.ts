@@ -16,6 +16,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { extname } from 'path';
 import { RatingController } from './rating/rating.controller';
 import { Rating } from './rating/rating.model';
+import { UserController } from './user/user.controller';
 
 @Module({
   imports: [
@@ -45,7 +46,7 @@ import { Rating } from './rating/rating.model';
     TypeOrmModule.forFeature([Book, Author, Category, Editorial, User, Reservation, Rating]) // Esto permite acceder a Repository
     
   ],
-  controllers: [BookController, AuthorController, ReservationController, CategoryController, RatingController],
+  controllers: [BookController, AuthorController, ReservationController, CategoryController, RatingController, UserController],
   providers: [],
 })
 export class AppModule {}
