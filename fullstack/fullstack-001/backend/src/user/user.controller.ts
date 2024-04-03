@@ -1,17 +1,19 @@
-import { Body, ConflictException, Controller, Post } from '@nestjs/common';
+import { Body, ConflictException, Controller, NotFoundException, Post, UnauthorizedException } from '@nestjs/common';
 import { Register } from './register.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './user.model';
 import { Repository } from 'typeorm';
 import { Role } from './role.enum';
 import { Login } from './login.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Controller('user')
 export class UserController {
 
 
     constructor(
-        @InjectRepository(User) private userRepository: Repository<User>
+        @InjectRepository(User) private userRepository: Repository<User>,
+        private jwtService: JwtService
     ) {}
     
     @Post('register')
@@ -39,13 +41,35 @@ export class UserController {
     async login(@Body() login: Login) {
 
         // comprobar si el email existe
-
+        const exists = await this.userRepository.existsBy({
+             email: login.email
+        });
+        if(!exists)
+            throw new NotFoundException("Usuario no encontrado."); // 404
         // Recuperar el usuario
+          const user = await this.userRepository.findOne({
+              where: {
+                email: login.email
+              }
+          });
 
         // Comparar contraseñas
-            // si no coinciden lanzar UnauthorizedException
+        if (user.password !== login.password) {
+             // si no coinciden lanzar UnauthorizedException
+            throw new UnauthorizedException("Credenciales icorrectas"); // 401
+        }
+           
 
         // Crear y devolver token de acceso
+        let userData = {
+            sub: user.id,
+            email: user.email,
+            role: user.role
+        };
+        let token = {
+            token: await this.jwtService.signAsync(userData)
+        }
+        return token;
     }
     
 }

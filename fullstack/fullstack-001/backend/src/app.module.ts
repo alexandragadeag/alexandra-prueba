@@ -17,9 +17,14 @@ import { extname } from 'path';
 import { RatingController } from './rating/rating.controller';
 import { Rating } from './rating/rating.model';
 import { UserController } from './user/user.controller';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
+    JwtModule.register({
+    secret: 'admin',
+    signOptions: {expiresIn: '7d'}
+    }),
     MulterModule.register({
       storage: diskStorage({
         // carpeta destino donde guardar los archivos
