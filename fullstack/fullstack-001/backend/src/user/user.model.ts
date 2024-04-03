@@ -14,7 +14,7 @@ export class User {
     @Column()
     password:string;
 
-    @Column({nullable: true})
+    @Column({nullable: true}) //campo opcional 
     phone: string;
 
     @Column({
