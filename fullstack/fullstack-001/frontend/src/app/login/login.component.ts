@@ -40,8 +40,8 @@ export class LoginComponent {
         console.log(data.token);
         this.authService.handleLogin(data.token);
         // Redirigir hacia la página home
-        this.router.navigate(['/product-list']);
-        
+        this.router.navigate(['/books']);
+
                 });
 
 
