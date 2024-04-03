@@ -22,4 +22,10 @@ export class AuthenticationService {
     localStorage.setItem("jwt_token", token);
     this.isLoggedIn.next(true);
   }
+
+  logout() {
+    localStorage.removeItem("jwt_token");
+    this.isLoggedIn.next(false);
+
+  }
 }

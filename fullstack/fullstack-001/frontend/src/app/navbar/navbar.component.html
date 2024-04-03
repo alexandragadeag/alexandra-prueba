@@ -60,10 +60,19 @@
             </li>
     
     @if(isLoggedIn){
-        <button type="button" class="btn btn-warning ms-2">Logout</button>
+        <button type="button" class="btn btn-warning ms-2" (click)="logout()">
+            Logout
+            <i class="bi bi-box-arrow-right ms-2"></i>
+        </button>
     } @else{
-    <button type="button" class="btn btn-success ms-2" routerLink="/login">Login</button>
-    <button type="button" class="btn btn-secondary ms-2" routerLink="/register">Registro</button>
+    <button type="button" class="btn btn-success ms-2" routerLink="/login">
+      Login
+      <i class="bi bi-box-arrow-up"></i>
+    </button>
+    <button type="button" class="btn btn-secondary ms-2" routerLink="/register">
+      Registro
+      <i class="bi bi-person-plus ms-2"></i>
+    </button>
 }
     
     </ul>
