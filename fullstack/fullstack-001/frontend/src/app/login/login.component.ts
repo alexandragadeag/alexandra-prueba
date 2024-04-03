@@ -31,7 +31,7 @@ export class LoginComponent {
     }
 
     // Enviar login por POST a backend con http
-    let url = 'http://localhost:3000/login';
+    let url = 'http://localhost:3000/user/login';
     this.httpClient.post<Login>(url, login)
                 .subscribe(res => {
                   // La respuesta tendría un token JWT que podríamos
