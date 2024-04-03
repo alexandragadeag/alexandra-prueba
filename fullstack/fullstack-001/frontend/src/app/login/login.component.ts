@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { login } from '../interfaces/login.model';
+import { Login } from '../interfaces/login.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ export class LoginComponent {
 
   loginForm = this.fb.group({
     email: ['', Validators.required],
-    password: ['',Validators.required],
+    password: ['', Validators.required]
   });
 
   constructor(
@@ -25,22 +25,24 @@ export class LoginComponent {
 
   save() {
 
-    let login: login = {
-      email: this.loginForm.get('email')?.value??'',
-      password: this.loginForm.get('password')?.value??''
+    let login: Login = {
+      email: this.loginForm.get('email')?.value ?? '',
+      password: this.loginForm.get('password')?.value ?? ''
     }
 
-   //Enviar por POST a backend con http
-   let url = 'http://localhost:3000/login';
-   this.httpClient.post<login>(url, login)
-   .subscribe(res =>{
-     // La respuesta tendrá un token JWT que podríamos 
-     // guardar en localStorage
-    console.log(res);
+    // Enviar login por POST a backend con http
+    let url = 'http://localhost:3000/login';
+    this.httpClient.post<Login>(url, login)
+                .subscribe(res => {
+                  // La respuesta tendría un token JWT que podríamos
+                  // guardar en localStorage.
+                  console.log(res);
 
-    //Redirigir haciala página home
-    this.router.navigate(['product-list']);
-   });
+                  // Redirigir hacia la página home
+                  this.router.navigate(['/product-list']);
+                });
+
+
 
   }
 }
