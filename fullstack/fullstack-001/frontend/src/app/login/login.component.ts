@@ -3,6 +3,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Login } from '../interfaces/login.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication/authentication.service';
+import { Token } from '../authentication/token.dto';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private httpClient: HttpClient,
-    private router: Router) {}
+    private router: Router,
+    private authService: AuthenticationService) {}
 
   save() {
 
@@ -32,14 +35,13 @@ export class LoginComponent {
 
     // Enviar login por POST a backend con http
     let url = 'http://localhost:3000/user/login';
-    this.httpClient.post<Login>(url, login)
-                .subscribe(res =>{
-                  // La respuesta tendría un token JWT que podríamos
-                  // guardar en localStorage.
-                  console.log(res);
 
-                  // Redirigir hacia la página home
-                  this.router.navigate(['/product-list']);
+    this.httpClient.post<Token>(url, login).subscribe(data =>{
+        console.log(data.token);
+        this.authService.handleLogin(data.token);
+        // Redirigir hacia la página home
+        this.router.navigate(['/product-list']);
+        
                 });
 
 
