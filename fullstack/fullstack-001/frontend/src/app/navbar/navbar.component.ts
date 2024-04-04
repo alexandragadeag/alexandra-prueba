@@ -13,7 +13,8 @@ import { AuthenticationService } from '../authentication/authentication.service'
 export class NavbarComponent {
    collapsed = true;
    isLoggedIn = true;
-   userEmail: string | undefined
+   userEmail: string | undefined;
+   isAdmin = false;
 
    constructor(private authService: AuthenticationService,
    private router: Router
@@ -22,7 +23,7 @@ export class NavbarComponent {
       // Esto permite que el componente Navbar se entere de que ha ocurrido un login exitoso
     this.authService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
     this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
-    
+    this.authService.isAdmin.subscribe(isAdmin => this.isAdmin = isAdmin);
    }
 
    logout(){
