@@ -58,6 +58,12 @@
             <a ngbDropdownItem routerLink="/reservations/create" (click)="$event.preventDefault()">Crear reserva</a>
             </div>
             </li>
+
+            @if (userEmail) {
+                
+                <button class= "btn btn-outline-success btn-sm mx-3">Cuenta {{userEmail.split('@')[0]}}</button>
+                
+                }
     
     @if(isLoggedIn){
         <button type="button" class="btn btn-warning ms-2" (click)="logout()">

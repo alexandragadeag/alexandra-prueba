@@ -1,3 +1,17 @@
+
+// Respuesta del backend, objeto con el token JWT
 export interface Token{
-    token:string;
+    token: string;
+}
+
+// Token JWT decodificado para acceder a sus datos 
+export interface DecodedToken{
+
+    sub: number;
+    email: string;
+    role: string;
+    lat: number;
+    exp: number;
+
+
 }

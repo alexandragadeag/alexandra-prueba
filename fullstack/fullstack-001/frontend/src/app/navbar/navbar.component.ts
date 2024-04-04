@@ -13,12 +13,16 @@ import { AuthenticationService } from '../authentication/authentication.service'
 export class NavbarComponent {
    collapsed = true;
    isLoggedIn = true;
+   userEmail: string | undefined
 
    constructor(private authService: AuthenticationService,
    private router: Router
     ) {
-   
+
+      // Esto permite que el componente Navbar se entere de que ha ocurrido un login exitoso
     this.authService.isLoggedIn.subscribe(isLoggedIn => this.isLoggedIn = isLoggedIn);
+    this.authService.userEmail.subscribe(userEmail => this.userEmail = userEmail);
+    
    }
 
    logout(){
