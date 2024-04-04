@@ -1,15 +1,15 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Book } from '../interfaces/book.model';
 import { Reservation } from '../interfaces/reservation.model';
 import { Rating } from '../interfaces/rating.model';
-import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-book-detail',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, NgbRatingModule, DatePipe],
+  imports: [RouterLink, NgbRatingModule, DatePipe],
   templateUrl: './book-detail.component.html',
   styleUrl: './book-detail.component.css'
 })

@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -10,7 +10,7 @@ import { NgbAlert } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-reservartion-form',
   standalone: true,
-  imports: [HttpClientModule, RouterLink, ReactiveFormsModule, CurrencyPipe, NgbAlert],
+  imports: [RouterLink, ReactiveFormsModule, CurrencyPipe, NgbAlert],
   templateUrl: './reservartion-form.component.html',
   styleUrl: './reservartion-form.component.css'
 })

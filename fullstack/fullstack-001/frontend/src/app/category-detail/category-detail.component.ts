@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Category } from '../interfaces/category.model';
@@ -7,7 +7,7 @@ import { Book } from '../interfaces/book.model';
 @Component({
   selector: 'app-category-detail',
   standalone: true,
-  imports: [HttpClientModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './category-detail.component.html',
   styleUrl: './category-detail.component.css'
 })

@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -7,7 +7,7 @@ import { Author } from '../interfaces/author.model';
 @Component({
   selector: 'app-author-form',
   standalone: true,
-  imports: [HttpClientModule, ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './author-form.component.html',
   styleUrl: './author-form.component.css'
 })

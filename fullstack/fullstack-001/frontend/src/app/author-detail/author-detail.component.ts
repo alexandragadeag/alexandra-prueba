@@ -1,14 +1,14 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Author } from '../interfaces/author.model';
 import { Book } from '../interfaces/book.model';
-import { Category } from '../interfaces/category.model';
+
 
 @Component({
   selector: 'app-author-detail',
   standalone: true,
-  imports: [HttpClientModule, RouterLink],
+  imports: [RouterLink],
   templateUrl: './author-detail.component.html',
   styleUrl: './author-detail.component.css'
 })
