@@ -1,9 +1,10 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post, Query, Request } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Query, Request, UseGuards } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Reservation } from './reservation.model';
 import { Repository } from 'typeorm';
 import { log } from 'console';
 import { Role } from 'src/user/role.enum';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('reservation')
 export class ReservationController {
@@ -87,7 +88,9 @@ export class ReservationController {
     }
 
     @Post()
-    create(@Body() reservation: Reservation) {
+    @UseGuards(AuthGuard ('jwt'))
+    create(@Body() reservation: Reservation, @Request() request) {
+        reservation.user= request.user;
         return this.reservationRepo.save(reservation);
     }
 
