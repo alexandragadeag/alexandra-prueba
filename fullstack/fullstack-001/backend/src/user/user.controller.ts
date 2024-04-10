@@ -7,7 +7,7 @@ import { Role } from './role.enum';
 import { Login } from './login.dto';
 import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
-
+import * as bcrypt from 'bcrypt';
 @Controller('user')
 export class UserController {
 
@@ -26,12 +26,15 @@ export class UserController {
 
         if(exists)
             throw new ConflictException("Email ocupado");
+        
+        // Cifrar contraseña, El 10 es la fuerza del cifrado 
+        const password = bcrypt.hashSync(register.password, 10)
 
         // crear usuario en base de datos
         const user: User = {
             id: 0,
             email: register.email,
-            password: register.password,
+            password: password,
             phone: null,
             role: Role.USER,
             addressStreet: null
