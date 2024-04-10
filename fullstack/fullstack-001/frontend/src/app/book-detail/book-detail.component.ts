@@ -1,4 +1,4 @@
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Book } from '../interfaces/book.model';
@@ -6,10 +6,11 @@ import { Reservation } from '../interfaces/reservation.model';
 import { Rating } from '../interfaces/rating.model';
 import { NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-book-detail',
   standalone: true,
-  imports: [RouterLink, NgbRatingModule, DatePipe],
+  imports: [RouterLink, NgbRatingModule, DatePipe, ReactiveFormsModule],
   templateUrl: './book-detail.component.html',
   styleUrl: './book-detail.component.css'
 })
@@ -18,10 +19,14 @@ export class BookDetailComponent implements OnInit{
   book: Book | undefined;
   reservations: Reservation[] = [];
   ratings: Rating[] = [];
+  // formulario para crear nuevos comentarios
+  ratingForm = new FormGroup({
+    score: new FormControl(0),
+    comment: new FormControl('')
+  });
 
   constructor(private httpClient: HttpClient,
     private activatedRoute: ActivatedRoute) {
-      
     }
 
   ngOnInit(): void {
@@ -39,7 +44,21 @@ export class BookDetailComponent implements OnInit{
 
       this.httpClient.get<Rating[]>('http://localhost:3000/rating/filter-by-book/'+ id)
       .subscribe(ratings => this.ratings = ratings);
+    });
+  }
 
+  save() {
+    const rating: Rating = {
+      id: 0,
+      score: this.ratingForm.get('score')?.value ?? 0,
+      comment: this.ratingForm.get('comment')?.value ?? '',
+      book: this.book
+    }
+    this.httpClient.post<Rating>('http://localhost:3000/rating', rating)
+    .subscribe(rating => {
+      this.ratingForm.reset();
+      this.httpClient.get<Rating[]>('http://localhost:3000/rating/filter-by-book/'+ this.book?.id)
+      .subscribe(ratings => this.ratings = ratings);
     });
   }
 
