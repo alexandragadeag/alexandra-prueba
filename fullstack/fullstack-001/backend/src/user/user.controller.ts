@@ -25,7 +25,7 @@ export class UserController {
         });
 
         if(exists)
-            throw new ConflictException("Email ocupado");
+            throw new ConflictException("Email ocupado");// 409
         
         // Cifrar contraseña, El 10 es la fuerza del cifrado 
         const password = bcrypt.hashSync(register.password, 10)
