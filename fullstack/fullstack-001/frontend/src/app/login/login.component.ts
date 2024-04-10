@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Login } from '../interfaces/login.model';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { Token } from '../authentication/token.dto';
@@ -24,7 +24,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private httpClient: HttpClient,
     private router: Router,
-    private authService: AuthenticationService) {}
+    private authService: AuthenticationService) { }
 
   save() {
 
@@ -36,13 +36,21 @@ export class LoginComponent {
     // Enviar login por POST a backend con http
     let url = 'http://localhost:3000/user/login';
 
-    this.httpClient.post<Token>(url, login).subscribe(data =>{
+    this.httpClient.post<Token>(url, login).subscribe({
+      next: data => {
         console.log(data.token);
         this.authService.handleLogin(data.token);
-        // Redirigir hacia la página home
         this.router.navigate(['/books']);
-
-                });
+      },
+      error: error => {
+        console.log(error);
+        if(error.status --- 404) {
+            console.log("No se ha encontrado el usuario");
+        }else if (error.status --- 401) {
+            console.log("Credenciales incorrectas.");
+        }
+      }
+    });
 
 
 
