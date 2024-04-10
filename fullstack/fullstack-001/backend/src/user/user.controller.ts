@@ -60,9 +60,11 @@ export class UserController {
         });
 
         // Comparar contraseñas
-        if (user.password !== login.password) {
-            throw new UnauthorizedException("Credenciales incorrectas"); // 401
-        }
+        // IMPORTANTE: la contraseña de base de datos está cifrada con bcrypt
+        //if (user.password !== login.password) {
+          if(!bcrypt.compareSync(login.password, user.password)) { 
+             throw new UnauthorizedException("Credenciales incorrectas"); // 401
+          }
 
         // Crear y devolver token de acceso (JWT)
         let userData = {
