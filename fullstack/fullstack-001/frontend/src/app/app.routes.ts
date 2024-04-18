@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { roleAdminGuard } from './authentication/role.guard';
 import { AccountFormComponent } from './account-form/account-form.component';
+import { userLoggedInGuard } from './authentication/user-logged-in.guard';
 
 export const routes: Routes = [
     {
@@ -39,7 +40,9 @@ export const routes: Routes = [
     },
     {
         path: 'categories/:id/detail',
-        component: CategoryDetailComponent
+        component: CategoryDetailComponent,
+        canActivate: [userLoggedInGuard]
+
     },
     {
         path: 'books/:id/reserve',
